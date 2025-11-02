@@ -1,9 +1,6 @@
 Write pseudocode for Simple Temperature Converter
 Instructions
-1. Read temperature in Celsius
-2. Convert to Fahrenheit using F = (C * 9/5) + 32
-3. Print the Fahrenheit value
-/////////////////////////////////////////////////////////
+
 1 ask user to input value
 2 read user input and store in var c
 3 let f = (c * 9/5) + 32
