@@ -59,15 +59,17 @@ class Library{
 //add book id to know which book is being returned
 return_book(member_id,book_id){
         let member = this.members.find((mem)=> mem.id == member_id);
-        let bookinList = member.borrowed_books.find((bk)=> bk.id == book_id);
-        console.log('bookinList\n' + bookinList);
-        if(bookinList == null){
-            console.log(`Sorry, this member ${member.name} did not borrow this book`)
-        }
-        else if (bookinList != null){
+        console.log('member borrowed list\n' + member.borrowed_books);
+        let bookinList = member.borrowed_books. includes(book_id);
+        console.log('bookinList = ' + bookinList);
+        if(bookinList == true){
             member.borrowed_books.pop(bookinList.id);
-            bookinList.available = true;
+            let book = this.books.find((bk)=> bk.id == book_id);
+            book.available = true;
             console.log(`The member ${member.name} has returned this book`)
+        }
+        else {
+            console.log(`Sorry, this member ${member.name} did not borrow this book`)
         }
 }
 }
