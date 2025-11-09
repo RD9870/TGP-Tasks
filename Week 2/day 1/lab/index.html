@@ -1,0 +1,229 @@
+<!DOCTYPE html> <!--means that the language used is html 5-->
+<html lang="en"> <!--html starting tag where the web browser only reads the text inside it as html code-->
+<head> <!--the head tag contains info for the SEO-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend day 1 - Lab</title>
+</head>
+<body>
+    <!-- headlines -->
+    <h1>Hello World</h1>
+    <h2>Hello World</h2>
+    <h3>Hello World</h3>
+    <h4>Hello World</h4>
+    <h5>Hello World</h5>
+    <h6>Hello World</h6>
+
+<!-- gives break between lines -->
+<!-- <br> -->
+
+    <!-- text tags -->
+    <b>Bold text</b>
+<br>
+    <i>Italic text</i>
+<br>
+    <u>Underline text</u>
+    
+<!-- gives horizantal line between lines -->
+<!-- <hr> -->
+
+    <!-- text sizes -->
+    <small>SMALL TEXT</small>
+    <sup>super text</sup>
+    <sub>sub text</sub>
+
+<hr>
+
+    <!-- quoted text -->
+    <q>Ex aliquip qui nostrud elit eiusmod. Ad aliqua occaecat ullamco minim consectetur consequat eu tempor esse in.</q>
+
+    <!-- abbriviation with a cleraefication text when hovering -->
+    <abbr title="Talk to you later">TTYL</abbr>
+
+    <!-- paragraphs -->
+    <!-- does not show the paragraphs with the spacing as in vscode treats whatever number of spaces as one -->
+    <p>Dolore aliquip ad consectetur amet dolore. Quis minim minim dolor eiusmod minim dolore est dolor. Nisi sunt quis enim reprehenderit nostrud incididunt et tempor reprehenderit culpa dolore.</p>
+
+    <!-- shows the paragraphs with the same spacing as in vscode -->
+    <pre>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+Tempora magnam suscipit possimus perferendis tenetur ipsa 
+exercitationem nihil soluta veritatis repellat incidunt alias minima, 
+adipisci error tempore. Obcaecati cumque veritatis quasi!
+    </pre>
+
+    <!-- src="image path in project" alt="text that appears when image is not avalaible and can be used for accessability" title="image name that appears when hovering" width= "height change image size"> -->
+    <img src="i cry.jpg" alt="crying rumi" title="poor baby" width="200" height="200">
+    
+    <br>
+    <!-- links -->
+    <a href="https://www.google.com/" target="_blank">go to google</a> <!-- external link and target="_blank opens in a new tab--> 
+    <a href="i cry.jpg">go to my image</a> <!-- internal link -->
+    <br>
+
+    <!-- image in link -->
+    <a href="https://www.google.com/" target="_blank">    <img src="i cry.jpg" alt="crying rumi link" title="image link" width="200" height="200">
+</a>
+    <br>
+
+<!-- iframe show another web page inside this one -->
+<iframe src="https://play.typeracer.com/" frameborder="0" width="500" height="500"></iframe>
+
+<!-- block element vs inline element -->
+
+<!-- block container -->
+<div style="background-color: blueviolet;"> 
+    <u>INSIDE DIV</u>
+</div> 
+
+<b>SEPERATION</b>
+<!-- inline container -->
+<span style="background-color: blue;">
+    <i>INSIDE SPAN</i>
+</span>
+
+<section style="background-color: cyan;"> INSIDER SECTION</section>
+
+
+<!-- tables -->
+<Table border="2">
+    <!-- first table row use th to make the table headers -->
+    <tr>
+        <th>name</th>
+        <th>age</th>
+        <th>grade</th>
+    </tr>
+
+    <!-- second row name with it's data -->
+    <tr>
+        <td>alice</td> 
+        <td>12</td>
+        <td>6th</td>
+    </tr>
+    
+    <!-- third row name with it's data -->
+    <tr>
+        <td>bob</td>
+        <td>15</td>
+        <td>9th</td>
+    </tr>
+
+    <!-- fourth row name with it's data -->
+    <tr>
+        <td>caleb</td>
+        <td>18</td>
+        <td>12th</td>
+    </tr>
+</Table>
+
+    <!-- Lists -->
+    <h4>ol items</h4>
+    <ol type="I">
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+    </ol>
+
+    <h4>ul items</h4>
+    <ul type="circle">
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+    </ul>
+
+    <h4>Nested list</h4>
+    <ol start="5">
+        <li>
+            main item
+            <ul type="square">
+                <li>sub item
+                    <ol type="a">
+                        <li>subber item</li>
+                        <li>subber item</li>
+                        <li>subber item</li>
+                    </ol>
+                </li>
+                
+        </ul>
+        </li>
+        <li>
+            main item </li>
+    </ol>
+
+    
+    <form action="">
+        Name: <input type="text">
+        <br><br>
+        Age: <input type="number">
+        <br><br>
+        Password: <input type="password">
+        <br><br>
+        Color: <input type="color">
+        <br><br>
+        Check: <input type="checkbox">
+        <br><br>
+        Range: <input type="range">
+        <br><br>
+        multiline; <textarea rows="15" cols="15">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt recusandae beatae quidem a ratione amet exercitationem, necessitatibus qui. Eos, sapiente incidunt consectetur saepe quibusdam asperiores blanditiis fugiat necessitatibus sed quaerat.
+        </textarea>
+        <br><br>
+        select box
+        <select name="" id="">
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="" selected>3</option>
+            <option value="">4</option>
+        </select>
+
+        <!-- placeholder -->
+                <br><br>
+        Email <input type="email" placeholder="example@email.com">
+                <br><br>
+        Email <input type="email" value="example@emailval.com">
+
+        <!-- disapled and read only -->
+        <br>
+        disapled <input type="email" value="example@emailval.com" disabled>
+        <br>
+        readonly <input type="email" value="example@emailval.com" readonly>
+
+        <br>
+        <!-- max and min -->
+        Phone :<input type="text" minlength="1" maxlength="10" required>
+        <br>
+        Age: <input type="number" min="1" max="100">
+        <br>
+        <input type="file">
+        <br>
+        <!-- passes data an reloads the page -->
+        <input type="submit" value="submit type input btn"> 
+        <br>
+        <!-- resets all user input -->
+        <input type="reset" value="reset type input btn"> 
+        <br>
+        <!-- doesn't submit the form by default -->
+        <button><b>butn tag</b></button>
+        <input type="button" value="validate" onclick="alert('HIIIS')">
+    </form>
+
+    <form action="https://google.com/search">
+        <label for="mySearcgQuery">Enter your question</label>
+        <input type="search" name="q" id="mySearcgQuery">
+        <button type = "submit"> SEARCH</button>
+    </form>
+</body>
+</html>
+
