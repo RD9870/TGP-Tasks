@@ -1,0 +1,7 @@
+Predict the Output
+
+1. Predict what the program will print
+the program will not print anything. 
+
+2.Explain why it prints that result
+the program will not print anything because the conditions within the if statement are not met.

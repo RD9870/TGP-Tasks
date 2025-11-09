@@ -1,0 +1,4 @@
+What is one new concept you learned from this article?
+The types of programming methodologies.
+What is one thing still unclear or that you want to learn more about?
+computer architecture
