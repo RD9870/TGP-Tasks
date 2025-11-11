@@ -1,0 +1,246 @@
+#personalPhoto {
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    flex-direction:column ;
+    align-items: center;
+}
+
+#personalPhoto img {
+    height: 60vh;
+    width: 30vw;
+}
+
+#name h1{
+    text-transform: uppercase;
+    font-size: 100px;
+    font-weight: 400;
+    letter-spacing: -15px;
+    text-align: center;
+    color: black;
+}
+
+#itroText{
+    display: flex;
+    justify-content: center;
+    flex-direction:row ;
+    align-items: center;
+    }
+    .grey-letters{
+        color: #a1a9b0;
+    }
+    .red-letters{
+        color: red;
+    }
+    
+    #name h3 {
+        font-size: 20px;
+        color: #E04343;
+	letter-spacing: 13px;
+	text-transform: uppercase;
+}
+
+#downArrow img{
+    height: 5vh;
+    width: 5vw;
+    align-self: flex-start;
+}
+
+#aboutMe{
+    background-color: #E04343;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+}
+
+#aboutMe p{
+    text-align: center;
+}
+
+#aboutMe h3{
+    color: white;
+}
+
+.arrowDown{
+        background-image: url(assets/h1-bg.png);
+    background-position: center, bottom;
+    background-repeat: no-repeat;
+    padding-bottom: 50px;
+}
+
+#aboutMe span{
+    color: yellow;
+}
+
+
+#thingsIdoCards{
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* h3 text  */
+#thingsIDo h3 {
+    color: black;
+    display: flex;
+    justify-content: center;
+    flex-direction:row ;
+    /* color: blue; */
+}
+
+#thingsIDo{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.hobbyCards{
+    /* height: 30vh; */
+    width: 30vw;
+    overflow-wrap:anywhere;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column ;
+    text-align: center;
+}
+
+.horizontal-line{
+    background-image: url(assets/Horizontal-Line-PNG-Cutout.png);
+    background-position: center, bottom;
+    background-repeat: no-repeat;
+    padding-bottom: 40px;
+}
+
+
+.circle{
+    background-color: white ;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    /* border-color: ; */
+    border: 2px solid #E04343;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.circle img{
+    width: 150px;
+    height: 150px;
+}
+
+.circle:hover{
+    background-color: #E04343;
+}
+
+#contactMe{
+background-color: #E04343;
+padding: 7%;
+display: flex;
+justify-content: center;
+}
+
+#contactMe button{
+background-color: #E04343;
+font-weight: bold;
+letter-spacing: 1px;
+padding: 25px 40px;
+text-transform: uppercase;
+color: yellow;
+border: 1px solid yellow;
+}
+
+#contactMe button:hover{
+background-color: yellow;
+color: #E04343;
+}
+
+
+#myWorkExamples{
+    font-weight: bold;
+}
+
+#myWorkExamples span{
+    display: block;
+    color: #E04343;
+}
+
+.gey-scale-image-galery{
+    width: 20vw;
+    height: 85vh;
+    margin: 0;
+    padding: 0;
+    display: block;
+    filter: grayscale(100%);
+}
+
+.gey-scale-image-galery:hover{
+    filter: grayscale(0%);
+}
+
+#galeryDiv{
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+align-items: baseline;
+justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.sectionTitle{
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 4px;
+        text-align: center;
+
+}
+
+#dropMeLine {
+ padding-bottom: 5%;
+}
+
+#dropMeLine span{
+    color: #E04343;
+}
+
+.LineCards{
+    background-color: #F3F5F8;
+    border-bottom:2px solid red ;
+    padding: 4% 7%;
+    text-align: center;
+}
+
+.LineCards:hover{
+    border-bottom:2px solid yellow ;
+}
+
+.card-text{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #545454;
+}
+
+.LineCards IMG{
+    height: 50PX;
+    width: 50PX;
+}
+
+/* div{
+    margin: 0;
+    width: 100%;
+}
+ */
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
