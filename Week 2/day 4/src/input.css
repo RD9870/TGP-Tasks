@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bluish: #3b82f6;
+}
+
+@layer components {
+  .main-text {
+    @apply uppercase font-bold tracking-wider text-center dark:text-white;
+  }
+
+  .sub-text {
+    @apply uppercase font-thin tracking-widest md:text-balance text-center dark:text-white;
+  }
+  .gallery-image {
+    @apply h-auto max-w-full rounded-lg;
+  }
+
+  .navbar-link {
+    @apply uppercase text-gray-900 dark:text-white font-bold hover:underline;
+  }
+
+  .card {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700;
+  }
+
+  .card-image {
+    @apply rounded-t-lg  w-full h-full object-cover object-center aspect-[5/4];
+  }
+
+  .card-title {
+    @apply mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white;
+  }
+
+  .card-text {
+    @apply mb-3 font-normal text-gray-700 dark:text-gray-400;
+  }
+
+  .card-price {
+    @apply text-3xl font-bold text-gray-900 dark:text-white;
+  }
+
+  .form-label {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+  }
+
+  .form-text-box {
+    /* bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 */
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5;
+  }
+
+  .text-box-icon {
+    @apply absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none;
+  }
+
+  .btn-style {
+    @apply text-black uppercase bg-gray-300  hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
+  }
+
+  .nav-bar {
+    @apply w-full md:w-6/12 md:mx-auto bg-gray-50 border-black border-2 dark:bg-gray-700 dark:border-none;
+  }
+
+  @layer base {
+    body {
+      @apply dark:bg-gray-800;
+    }
+    p,
+    h1 {
+      @apply dark:text-white;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .form-text-box {
+      @apply bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500;
+    }
+    .btn-style {
+      @apply text-white bg-gray-500  hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-500 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
+    }
+  }
+}

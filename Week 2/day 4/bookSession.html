@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diana Corin - Book A Session</title>
+    <!-- tailwindcss -->
+    <link rel="stylesheet" href="src/output.css" />
+    <!-- flowbite -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- header -->
+    <div class="flex flex-col">
+      <div class="flex justify-center text-xl my-16">
+        <div>
+          <h1 class="main-text">Diana Corin</h1>
+        </div>
+      </div>
+    </div>
+    <!-- slogan and booking form-->
+    <div class="flex flex-col items-center gap-7 md:flex-row md:items-start">
+      <div class="flex-col items-center gap-8 text-center md:mr-10">
+        <h2 class="main-text">Book a session</h2>
+        <h4 class="sub-text">make us a part of your special day</h4>
+      </div>
+      <!-- booking form takes up most of the space -->
+      <form class="max-w-sm mx-auto w-3/4">
+        <div class="mb-5">
+          <label for="cusName" class="form-label">Your Namr</label>
+          <div class="relative max-w-sm">
+            <div class="text-box-icon">
+              <!-- user icon -->
+              <svg
+                class="w-4 h-4 text-gray-500"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                style="enable-background: new 0 0 32 32"
+                xml:space="preserve"
+              >
+                <path
+                  d="M16 14c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm0-12c-2.757 0-5 2.243-5 5s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5zM27 32a1 1 0 0 1-1-1v-6.115a6.95 6.95 0 0 0-6.942-6.943h-6.116A6.95 6.95 0 0 0 6 24.885V31a1 1 0 1 1-2 0v-6.115c0-4.93 4.012-8.943 8.942-8.943h6.116c4.93 0 8.942 4.012 8.942 8.943V31a1 1 0 0 1-1 1z"
+                />
+              </svg>
+            </div>
+            <input type="text" id="cusName" class="form-text-box" required />
+          </div>
+        </div>
+        <div class="mb-5">
+          <label for="email" class="form-label">Your email</label>
+          <div class="relative max-w-sm">
+            <div class="text-box-icon">
+              <!-- email icon -->
+              <svg
+                class="w-4 h-4 text-gray-500"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M22 5v4l-10 4L2 9V5a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1zM2 11.154V19a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-7.846l-10 4z"
+                />
+              </svg>
+            </div>
+            <input
+              type="email"
+              id="email"
+              class="form-text-box"
+              placeholder="name@flowbite.com"
+              required
+            />
+          </div>
+        </div>
+        <!-- date picker -->
+        <label for="default-datepicker" class="form-label">Your date</label>
+        <div class="relative max-w-sm">
+          <div class="text-box-icon">
+            <!-- calender icon -->
+            <svg
+              class="w-4 h-4 text-gray-500"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+              />
+            </svg>
+          </div>
+          <input
+            datepicker
+            id="default-datepicker"
+            type="text"
+            class="form-text-box"
+            placeholder="Select date"
+          />
+        </div>
+        <!-- confirm btn -->
+        <div class="mt-10 flex justify-end">
+          <button type="submit" class="btn-style">Confirm Booking</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- footer -->
+    <div class="flex justify-center flex-col items-center my-10">
+      <nav class="nav-bar">
+        <div class="px-4 py-3 mx-auto">
+          <div class="flex justify-center">
+            <ul class="flex flex-row mt-0 space-x-8 text-sm">
+              <li>
+                <a href="index.html" class="navbar-link" aria-current="page"
+                  >portfolio</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="navbar-link">about</a>
+              </li>
+              <li>
+                <a href="prices.html" class="navbar-link">prices</a>
+              </li>
+              <li>
+                <a href="bookSession.html" class="navbar-link"
+                  >book a session</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div>
+        <p class="sub-text">© 2025 by rfd</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  </body>
+</html>
