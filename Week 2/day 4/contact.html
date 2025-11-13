@@ -22,13 +22,13 @@
       </div>
     </div>
     <!-- slogan and booking form-->
-    <div class="flex flex-col items-center gap-7 md:flex-row md:items-start">
-      <div class="flex-col items-center gap-8 text-center md:mr-10">
-        <h2 class="main-text">Book a session</h2>
-        <h4 class="sub-text">make us a part of your special day</h4>
+    <div class="flex flex-col items-center md:flex-row md:items-start">
+      <div class="mx-auto flex w-5/12 flex-col items-center">
+        <h2 class="main-text">Drop me a line</h2>
+        <h4 class="sub-text">Fill the form and i'll get back to you!</h4>
       </div>
       <!-- booking form takes up most of the space -->
-      <form class="max-w-sm mx-auto w-3/4">
+      <form class="mx-auto max-w-md w-3/4 md:7/12">
         <div class="mb-5">
           <label for="cusName" class="form-label">Your Namr</label>
           <div class="relative max-w-sm">
@@ -76,39 +76,24 @@
           </div>
         </div>
         <!-- date picker -->
-        <label for="default-datepicker" class="form-label">Your date</label>
+        <label for="message" class="form-label">Your message</label>
         <div class="relative max-w-sm">
-          <div class="text-box-icon">
-            <!-- calender icon -->
-            <svg
-              class="w-4 h-4 text-gray-500"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-              />
-            </svg>
-          </div>
-          <input
-            datepicker
-            id="default-datepicker"
-            type="text"
+          <textarea
+            id="message"
+            rows="4"
             class="form-text-box"
-            placeholder="Select date"
-          />
+            placeholder="Write your message here..."
+          ></textarea>
         </div>
         <!-- confirm btn -->
-        <div class="mt-10 flex justify-end">
-          <button type="submit" class="btn-style">Confirm Booking</button>
+        <div class="mt-10 flex justify-center">
+          <button type="submit" class="btn-style">Send message</button>
         </div>
       </form>
     </div>
 
-    <!-- footer -->
-    <div class="flex justify-center flex-col items-center my-10">
+    <!-- navbar -->
+    <div class="flex justify-center flex-col items-center my-3">
       <nav class="nav-bar">
         <div class="px-4 py-3 mx-auto">
           <div class="flex justify-center">
@@ -122,11 +107,14 @@
                 <a href="about.html" class="navbar-link">about</a>
               </li>
               <li>
-                <a href="prices.html" class="navbar-link">prices</a>
+                <a href="archive.html" class="navbar-link">archive</a>
               </li>
               <li>
-                <a href="bookSession.html" class="navbar-link"
-                  >book a session</a
+                <a
+                  href="contact.html"
+                  class="navbar-link current-page"
+                  aria-current="page"
+                  >contact</a
                 >
               </li>
             </ul>

@@ -17,7 +17,11 @@
   }
 
   .navbar-link {
-    @apply uppercase text-gray-900 dark:text-white font-bold hover:underline;
+    @apply uppercase text-gray-900 dark:text-white font-thin hover:underline;
+  }
+
+  .current-page {
+    @apply font-bold;
   }
 
   .card {
@@ -29,7 +33,7 @@
   }
 
   .card-title {
-    @apply mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white;
+    @apply text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white;
   }
 
   .card-text {
