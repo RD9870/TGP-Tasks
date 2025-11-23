@@ -1,7 +1,11 @@
 button {
-  background-color: #918ab3;
+  background-color: #6c757d;
   padding: 10px;
-  box-shadow: 8px;
+  box-shadow: 3px 2px #888888;
+  border-radius: 8px;
+  border-style: solid #000;
+  color: #fff;
+  font-weight: 600;
 }
 
 div {
