@@ -1,0 +1,16 @@
+button {
+  background-color: #918ab3;
+  padding: 10px;
+  box-shadow: 8px;
+}
+
+div {
+  display: grid;
+  align-items: center;
+}
+
+h1,
+h4 {
+  font-weight: lighter;
+  text-align: center;
+}
