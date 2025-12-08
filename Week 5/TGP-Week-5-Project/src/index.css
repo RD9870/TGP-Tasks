@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-btn-orange: #af794d;
+  --color-nav-orage: #2d2d44;
+  --color-main-text: #302c4d;
+  --color-dashboard-color: #f4f6f8;
+  --color-primary-btn: #e76e43;
+  --color-table-header: #7a8fa6;
+  /*--color-
+  --color-
+  --color- */
+}
+
+@layer components {
+  .th-style {
+    @apply border px-2 py-2 capitalize text-center text-white whitespace-nowrap;
+  }
+
+  .td-style {
+    @apply px-2 py-2 text-center font-light whitespace-nowrap;
+  }
+
+  .dropDownMenu {
+    @apply absolute top-5 w-12 p-10 bg-white;
+  }
+}
