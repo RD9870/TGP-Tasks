@@ -1,0 +1,1469 @@
+{
+	"info": {
+		"_postman_id": "2939268f-a92a-4b03-847d-fb3fbee42510",
+		"name": "Saees Cards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14913181",
+		"_collection_link": "https://vue-ly.postman.co/workspace/Slash-Developers-Team~6b55fb93-12f4-4f7e-b2de-aebba476ee69/collection/14913181-2939268f-a92a-4b03-847d-fb3fbee42510?action=share&source=collection_link&creator=14913181"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\":\"926175513\",\r\n    \"password\":\"password\",\r\n    \"device_name\":\"Android/IOS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/vendor/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\":\"922354234\",\r\n    \"password\":\"password\",\r\n    \"device_name\":\"Ultra\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/vendor/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 21:57:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"4|vty1DuzKxqVWlynEEbm0pqPabbXpJwLTiwjA5xKe5919300d\",\n    \"vendor\": {\n        \"id\": 1,\n        \"name\": \"admin Manager\",\n        \"email\": \"manager@admin.com\",\n        \"phone\": \"922354234\",\n        \"email_verified_at\": null,\n        \"vendor_id\": 1,\n        \"is_active\": 1,\n        \"created_at\": \"2025-02-10T17:33:08.000000Z\",\n        \"updated_at\": \"2025-02-10T17:33:08.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\":\"92235423x4\",\r\n    \"password\":\"password\",\r\n    \"device_name\":\"Ultra\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/vendor/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 21:57:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "3"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The provided credentials are incorrect.\",\n    \"errors\": {\n        \"phone\": [\n            \"The provided credentials are incorrect.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/vendor/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Actions",
+			"item": [
+				{
+					"name": "info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/vendor/info",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"info"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/vendor/info",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 21:58:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Tech Solutions Inc\",\n        \"address\": \"123 Tech Street, Silicon Valley\",\n        \"is_active\": true,\n        \"phone\": \"+1234567890\",\n        \"email\": \"contact@techsolutions.com\",\n        \"created_at\": \"2025-02-10T17:33:07.000000Z\",\n        \"updated_at\": \"2025-02-11T16:59:03.000000Z\",\n        \"balance\": \"0.00\",\n        \"last_transaction_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/vendor/me",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/vendor/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 21:58:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"admin Manager\",\n        \"email\": \"manager@admin.com\",\n        \"phone\": \"922354234\",\n        \"email_verified_at\": null,\n        \"vendor_id\": 1,\n        \"is_active\": 1,\n        \"created_at\": \"2025-02-10T17:33:08.000000Z\",\n        \"updated_at\": \"2025-02-10T17:33:08.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/vendor/transactions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/vendor/transactions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"transactions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Feb 2025 19:26:31 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 6,\n            \"user\": {\n                \"id\": 2,\n                \"name\": \"Admin User\"\n            },\n            \"type\": \"credit\",\n            \"amount\": \"23112.00\",\n            \"balance_before\": \"23727.00\",\n            \"balance_after\": \"46839.00\",\n            \"reference\": \"INV-4U4RDBZFJW\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 5,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Vendor Manager\"\n            },\n            \"type\": \"credit\",\n            \"amount\": \"123.00\",\n            \"balance_before\": \"615.00\",\n            \"balance_after\": \"738.00\",\n            \"reference\": \"INV-44AQG9ZQ7R\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 4,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Vendor Manager\"\n            },\n            \"type\": \"credit\",\n            \"amount\": \"123.00\",\n            \"balance_before\": \"492.00\",\n            \"balance_after\": \"615.00\",\n            \"reference\": \"INV-HKEKLPG8F5\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Vendor Manager\"\n            },\n            \"type\": \"credit\",\n            \"amount\": \"123.00\",\n            \"balance_before\": \"369.00\",\n            \"balance_after\": \"492.00\",\n            \"reference\": \"INV-VL6LVREYMJ\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Vendor Manager\"\n            },\n            \"type\": \"credit\",\n            \"amount\": \"123.00\",\n            \"balance_before\": \"246.00\",\n            \"balance_after\": \"369.00\",\n            \"reference\": \"INV-4BBQFCLKXO\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 1,\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Vendor Manager\"\n            },\n            \"type\": \"credit\",\n            \"amount\": \"123.00\",\n            \"balance_before\": \"123.00\",\n            \"balance_after\": \"246.00\",\n            \"reference\": \"INV-ZKACQ9RN8J\",\n            \"description\": \"\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/v1/vendor/transactions?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/v1/vendor/transactions?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/v1/vendor/transactions?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/v1/vendor/transactions\",\n        \"per_page\": 15,\n        \"to\": 6,\n        \"total\": 6\n    }\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "wallets",
+			"item": [
+				{
+					"name": "validate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uuid\": \"45050d57-3054-428d-a1c2-86df90624c7d\",\r\n    \"amount\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/vendor/wallets/validate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"wallets",
+								"validate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"uuid\": \"38400c61-8067-49e3-970e-d5cf48e4b3ca\",\r\n    \"amount\": 501\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/vendor/wallets/validate",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"wallets",
+										"validate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 21:58:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"you can do the Transaction\",\n    \"data\": {\n        \"can_transaction\": true,\n        \"wallet_id\": 1,\n        \"family_id\": 1,\n        \"balance\": \"2136.00\",\n        \"expiry_date\": \"2025-12-10T00:00:00.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"uuid\": \"38400c61-8067-49e3-970e-d5cf48e4b3ca\",\r\n    \"amount\": 50111\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/vendor/wallets/validate",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"wallets",
+										"validate"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 21:59:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Insufficient balance.\",\n    \"data\": {\n        \"can_transaction\": false,\n        \"wallet_id\": 1,\n        \"family_id\": 1,\n        \"balance\": \"2136.00\",\n        \"expiry_date\": \"2025-12-10T00:00:00.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"uuid\": \"38400c61-8067-49e3-970e-d5cf48e4b3cc\",\r\n    \"amount\": 50111\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/vendor/wallets/validate",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"wallets",
+										"validate"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 21:59:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid or expired wallet.\",\n    \"data\": {\n        \"can_transaction\": false,\n        \"wallet_id\": null,\n        \"family_id\": null,\n        \"balance\": null,\n        \"expiry_date\": null\n    }\n}"
+						},
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"uuid\": \"38400c61-8067-49e3-970e-d5cf48e4b3cax\",\r\n    \"amount\": \"50sad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/vendor/wallets/validate",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"wallets",
+										"validate"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 22:00:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The amount field must be a number.\",\n    \"errors\": {\n        \"amount\": [\n            \"The amount field must be a number.\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "invoices",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/vendor/invoices?page=2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/vendor/invoices",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"invoices"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 22:03:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"amount\": \"50.00\",\n            \"vendor_id\": 1,\n            \"wallet_id\": 1,\n            \"family_id\": 1,\n            \"image\": null,\n            \"status\": \"approved\",\n            \"approved_by\": 2,\n            \"approved_at\": \"2025-02-10T18:51:00.000000Z\",\n            \"created_at\": \"2025-02-10T18:50:29.000000Z\",\n            \"updated_at\": \"2025-02-10T18:51:00.000000Z\",\n            \"wallet\": {\n                \"id\": 1,\n                \"uuid\": \"38400c61-8067-49e3-970e-d5cf48e4b3ca\",\n                \"family_id\": 1,\n                \"balance\": \"2136.00\",\n                \"notes\": \"Primary wallet\",\n                \"is_active\": true,\n                \"created_by\": 1,\n                \"deactivated_by\": null,\n                \"deactivated_at\": null,\n                \"created_at\": \"2025-02-10T17:33:13.000000Z\",\n                \"updated_at\": \"2025-02-10T17:33:13.000000Z\",\n                \"deleted_at\": null,\n                \"expiry_date\": \"2025-12-10T00:00:00.000000Z\"\n            },\n            \"family\": {\n                \"id\": 1,\n                \"institution_id\": 1,\n                \"name\": \"Family 1 - Al-Azhar University\",\n                \"code\": \"FAM11\",\n                \"head_of_family\": \"Ahmed Al-Sultan\",\n                \"phone\": \"+60 817 5549101\",\n                \"email\": \"family1@example.com\",\n                \"address\": \"738 Main Street, Amman, Saudi Arabia\",\n                \"members_count\": 6,\n                \"is_active\": true,\n                \"created_at\": \"2025-02-10T17:33:13.000000Z\",\n                \"updated_at\": \"2025-02-10T17:33:13.000000Z\",\n                \"deleted_at\": null\n            }\n        },\n        {\n            \"id\": 1,\n            \"amount\": \"50.00\",\n            \"vendor_id\": 1,\n            \"wallet_id\": 1,\n            \"family_id\": 1,\n            \"image\": null,\n            \"status\": \"wait_for_approve\",\n            \"approved_by\": null,\n            \"approved_at\": null,\n            \"created_at\": \"2025-02-10T18:49:42.000000Z\",\n            \"updated_at\": \"2025-02-10T18:49:42.000000Z\",\n            \"wallet\": {\n                \"id\": 1,\n                \"uuid\": \"38400c61-8067-49e3-970e-d5cf48e4b3ca\",\n                \"family_id\": 1,\n                \"balance\": \"2136.00\",\n                \"notes\": \"Primary wallet\",\n                \"is_active\": true,\n                \"created_by\": 1,\n                \"deactivated_by\": null,\n                \"deactivated_at\": null,\n                \"created_at\": \"2025-02-10T17:33:13.000000Z\",\n                \"updated_at\": \"2025-02-10T17:33:13.000000Z\",\n                \"deleted_at\": null,\n                \"expiry_date\": \"2025-12-10T00:00:00.000000Z\"\n            },\n            \"family\": {\n                \"id\": 1,\n                \"institution_id\": 1,\n                \"name\": \"Family 1 - Al-Azhar University\",\n                \"code\": \"FAM11\",\n                \"head_of_family\": \"Ahmed Al-Sultan\",\n                \"phone\": \"+60 817 5549101\",\n                \"email\": \"family1@example.com\",\n                \"address\": \"738 Main Street, Amman, Saudi Arabia\",\n                \"members_count\": 6,\n                \"is_active\": true,\n                \"created_at\": \"2025-02-10T17:33:13.000000Z\",\n                \"updated_at\": \"2025-02-10T17:33:13.000000Z\",\n                \"deleted_at\": null\n            }\n        }\n    ],\n    \"first_page_url\": \"http://127.0.0.1:8000/api/v1/vendor/invoices?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://127.0.0.1:8000/api/v1/vendor/invoices?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://127.0.0.1:8000/api/v1/vendor/invoices?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://127.0.0.1:8000/api/v1/vendor/invoices\",\n    \"per_page\": 15,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "amount",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "wallet_uuid",
+									"value": "38400c61-8067-49e3-970e-d5cf48e4b3ca",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "path",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/vendor/invoices",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"invoices"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"wallet_uuid\":\"38400c61-8067-49e3-970e-d5cf48e4b3ca\",\r\n    \"amount\":123,\r\n    \"description\":\"description\",\r\n    \"image\":\"path\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/vendor/invoices",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"invoices"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 22:06:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"vendor_id\": 1,\n        \"wallet_id\": 1,\n        \"family_id\": 1,\n        \"amount\": \"123.00\",\n        \"status\": \"wait_for_approve\",\n        \"image\": \"path\",\n        \"updated_at\": \"2025-02-15T22:06:02.000000Z\",\n        \"created_at\": \"2025-02-15T22:06:02.000000Z\",\n        \"id\": 6\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/vendor/invoices/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"invoices",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/vendor/invoices/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"invoices",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 22:06:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"amount\": \"50.00\",\n    \"vendor_id\": 1,\n    \"wallet_id\": 1,\n    \"family_id\": 1,\n    \"image\": null,\n    \"status\": \"approved\",\n    \"approved_by\": 2,\n    \"approved_at\": \"2025-02-10T18:51:00.000000Z\",\n    \"created_at\": \"2025-02-10T18:50:29.000000Z\",\n    \"updated_at\": \"2025-02-10T18:51:00.000000Z\",\n    \"wallet\": {\n        \"id\": 1,\n        \"uuid\": \"38400c61-8067-49e3-970e-d5cf48e4b3ca\",\n        \"family_id\": 1,\n        \"balance\": \"2136.00\",\n        \"notes\": \"Primary wallet\",\n        \"is_active\": true,\n        \"created_by\": 1,\n        \"deactivated_by\": null,\n        \"deactivated_at\": null,\n        \"created_at\": \"2025-02-10T17:33:13.000000Z\",\n        \"updated_at\": \"2025-02-10T17:33:13.000000Z\",\n        \"deleted_at\": null,\n        \"expiry_date\": \"2025-12-10T00:00:00.000000Z\"\n    },\n    \"family\": {\n        \"id\": 1,\n        \"institution_id\": 1,\n        \"name\": \"Family 1 - Al-Azhar University\",\n        \"code\": \"FAM11\",\n        \"head_of_family\": \"Ahmed Al-Sultan\",\n        \"phone\": \"+60 817 5549101\",\n        \"email\": \"family1@example.com\",\n        \"address\": \"738 Main Street, Amman, Saudi Arabia\",\n        \"members_count\": 6,\n        \"is_active\": true,\n        \"created_at\": \"2025-02-10T17:33:13.000000Z\",\n        \"updated_at\": \"2025-02-10T17:33:13.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "notifications",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/vendor/notifications?page=2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/vendor/notifications",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"notifications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 22:19:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"ترحيب\",\n            \"message\": \"مرحبا بك في عالم ادغال\",\n            \"vendor_id\": 1,\n            \"type\": \"info\",\n            \"is_read\": false,\n            \"read_at\": null,\n            \"created_by\": 2,\n            \"created_at\": \"2025-03-03T22:18:31.000000Z\",\n            \"updated_at\": \"2025-03-03T22:19:17.000000Z\"\n        }\n    ],\n    \"first_page_url\": \"http://127.0.0.1:8000/api/v1/vendor/notifications?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://127.0.0.1:8000/api/v1/vendor/notifications?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://127.0.0.1:8000/api/v1/vendor/notifications?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://127.0.0.1:8000/api/v1/vendor/notifications\",\n    \"per_page\": 15,\n    \"prev_page_url\": null,\n    \"to\": 1,\n    \"total\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/vendor/notifications/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"notifications",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/vendor/notifications/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"notifications",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 22:19:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Notification].\",\n    \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\NotFoundHttpException\",\n    \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Exceptions\\\\Handler.php\",\n    \"line\": 636,\n    \"trace\": [\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Exceptions\\\\Handler.php\",\n            \"line\": 584,\n            \"function\": \"prepareException\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Pipeline.php\",\n            \"line\": 51,\n            \"function\": \"render\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 172,\n            \"function\": \"handleException\",\n            \"class\": \"Illuminate\\\\Routing\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings.php\",\n            \"line\": 51,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Auth\\\\Middleware\\\\Authenticate.php\",\n            \"line\": 64,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Auth\\\\Middleware\\\\Authenticate\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\sanctum\\\\src\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 25,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 170,\n            \"function\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\{closure}\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\sanctum\\\\src\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 24,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 807,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 786,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 750,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 739,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 201,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 170,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\livewire\\\\livewire\\\\src\\\\Features\\\\SupportDisablingBackButtonCache\\\\DisableBackButtonCacheMiddleware.php\",\n            \"line\": 19,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Livewire\\\\Features\\\\SupportDisablingBackButtonCache\\\\DisableBackButtonCacheMiddleware\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings.php\",\n            \"line\": 51,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance.php\",\n            \"line\": 110,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\HandleCors.php\",\n            \"line\": 62,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\TrustProxies.php\",\n            \"line\": 58,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\InvokeDeferredCallbacks.php\",\n            \"line\": 22,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 209,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\InvokeDeferredCallbacks\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 176,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 145,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Application.php\",\n            \"line\": 1216,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\public\\\\index.php\",\n            \"line\": 17,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\WorkCode\\\\hussen\\\\Marid\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\resources\\\\server.php\",\n            \"line\": 23,\n            \"function\": \"require_once\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/vendor/notifications/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"notifications",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 22:23:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"ترحيب\",\n        \"message\": \"مرحبا بك في عالم ادغال\",\n        \"vendor_id\": 1,\n        \"type\": \"info\",\n        \"is_read\": true,\n        \"read_at\": \"2025-03-03T22:22:19.000000Z\",\n        \"created_by\": 2,\n        \"created_at\": \"2025-03-03T22:18:31.000000Z\",\n        \"updated_at\": \"2025-03-03T22:22:19.000000Z\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "uploader",
+			"item": [
+				{
+					"name": "uploader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1efeb996-6085-4340-990e-908bb7b5abdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/vendor/uploader",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"vendor",
+								"uploader"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "uploader",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1efeb996-6085-4340-990e-908bb7b5abdf"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/vendor/uploader",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"vendor",
+										"uploader"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.13"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 15 Feb 2025 22:07:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"path\": \"/storage/images/1/yBsCEv9kS6lXIoFGIO4xY5ANF0brnfyOPjeHx3Df.png\",\n    \"full_path\": \"http://127.0.0.1:8000/storage/images/1/yBsCEv9kS6lXIoFGIO4xY5ANF0brnfyOPjeHx3Df.png\",\n    \"message\": \"Image uploaded successfully\"\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"pm.request.addHeader({key:'Accept',value:'application/json'});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://127.0.0.1:8000/api/v1"
+		},
+		{
+			"key": "token",
+			"value": "1|JCvXhuFvw7dtWEdapzg9E3cHhqW0n4vwJgU234Cv31fc02bf"
+		},
+		{
+			"key": "host",
+			"value": "https://demo.mared.com.ly/api/v1",
+			"disabled": true
+		}
+	]
+}
