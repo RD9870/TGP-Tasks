@@ -115,6 +115,13 @@ class _TabsScreenState extends State<TabsScreen> {
                     "it will be processed shortly.",
                     true,
                   );
+                } else if (isValid == false && context.mounted) {
+                  showCustomFlushBar(
+                    context,
+                    "The transaction is invalid!",
+                    "You don't have enough funds.",
+                    false,
+                  );
                 }
               }
             },

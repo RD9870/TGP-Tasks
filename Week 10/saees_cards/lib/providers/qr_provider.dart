@@ -21,7 +21,6 @@ class QrProvider extends BaseProvider {
       hasScanned = true;
       await controller.pauseCamera();
       if (context.mounted) {
-        qrs.add(qrValue!);
         Navigator.pop(context, scanData.code); // Exit the scanner screen
       }
       debugPrint("qr: $qrValue");
@@ -34,13 +33,17 @@ class QrProvider extends BaseProvider {
     // "amount": 1
     final response = await api.post("/vendor/wallets/validate", {
       "uuid": qrValue,
-      "amount": "10",
+      //TODO Change ammount to test
+      "amount": "10", //"10000000000000",
     });
     final data = jsonDecode(response.body);
     // if (data["can_transaction"] == true) {
     //   return true;
     // }
     debugPrint("can_transaction: ${data["data"]["can_transaction"]}");
+    if (data["data"]["can_transaction"] == true) {
+      qrs.add(qrValue!);
+    }
     notifyListeners();
     return data["data"]["can_transaction"];
   }
