@@ -21,8 +21,12 @@ class TransactionDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: primaryColor.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: primaryColor.withValues(alpha: 0.15)),
+      ),
       margin: EdgeInsets.all(12),
-      color: primaryColor.withValues(alpha: 0.15),
       child: Center(
         child: SizedBox(
           // height: 450,
