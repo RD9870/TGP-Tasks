@@ -2,34 +2,48 @@ import { useState, useEffect } from "react";
 import ax from "../api/api";
 
 function SearchBox() {
+  // useState hooks for saving keyword as ther user types
   const [keyword, setKeyWord] = useState("");
+  // useState hooks for loading state as data is fetched
   const [isLoading, setIsLoading] = useState(false);
+  // useState hooks for saving search results to display
   const [result, setResult] = useState([]);
 
+  // useEffect hook to fetch search results when keyword changes
   useEffect(() => {
+    // search box is empty reset results
     if (!keyword) {
       setResult([]);
       return;
     }
 
+    // if 300ms passes since the last keystroke fetch data
     const delayDebounce = setTimeout(() => {
+      // show loading indicator
       setIsLoading(true);
+      // fetch search results from the api
       ax.get(`/products/search?q=${keyword}`)
+        // add the products from the response to the result array
         .then((res) => setResult(res.data.products))
+        // if an error occurs log it to the console
         .catch((err) => console.error(err))
+        // hide loading indicator afrer data is fetched
         .finally(() => setIsLoading(false));
     }, 300);
 
+    // call function to clear the timeout if keyword changes before the delay is over
     return () => clearTimeout(delayDebounce);
   }, [keyword]);
 
   return (
     <>
       <form className="max-w-md mx-auto my-4">
+        {/* search box lable */}
         <label className="block mb-2.5 text-sm font-medium text-heading sr-only ">
           Search
         </label>
         <div className="relative">
+          {/* search box icon */}
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-body"
@@ -48,6 +62,7 @@ function SearchBox() {
               />
             </svg>
           </div>
+          {/* search box input */}
           <input
             type="search"
             id="search"
@@ -57,6 +72,7 @@ function SearchBox() {
             value={keyword}
             onChange={(e) => setKeyWord(e.target.value)}
           />
+          {/* search button */}
           <button
             type="button"
             onClick={() => {
