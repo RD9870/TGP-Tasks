@@ -6,24 +6,39 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function Login() {
+  // state hook to disable the login button while the login request is being processed
   const [isClicked, setIsClicked] = useState<boolean>(false);
+
+  // hook to navigate to the dashboard page after successful login
   const navigate = useNavigate();
+
+  // state hook to store the user input for username and password
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
   });
 
   const LogUserIn = async (e: React.FormEvent) => {
+    // prevent the default form submission behavior and page reload
     e.preventDefault();
     try {
+      // make the login button unclickable
       setIsClicked(true);
+      // send a request to the backend to authenticate user
       const auth = await ax.post("/auth/login", userInput, {
         headers: { "Content-Type": "application/json" },
       });
+      // store the access token and refresh token in local storage for future authenticated requests
       const { accessToken, refreshToken } = auth.data;
+
+      // store the tokens in local storage
       localStorage.setItem("token", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
+
+      // go to the products page after login and
       navigate("/dashboard/products");
+
+      // show a welcome message with the user's first name
       toast(`Welcome in ${auth.data.firstName}`, {
         icon: "👋",
       });
