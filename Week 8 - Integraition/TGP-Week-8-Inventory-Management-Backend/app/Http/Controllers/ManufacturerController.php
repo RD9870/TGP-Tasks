@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class ManufacturerController extends Controller
 {
-   public function index() {
+    public function index() {
+    // return the manufacturers.
     return response()->json(Manufacturer::select('id','name')->get());
 }
 }
