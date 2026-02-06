@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItem extends Model
 {
-    //
-
+    // The attributes that are mass assignable.
     protected $fillable = [
         'order_id',
         'book_id',
@@ -15,13 +14,15 @@ class OrderItem extends Model
         'price',
     ];
 
-    public function order()
-    {
+    //  Relationships
+
+    // An order item belongs to an order
+    public function order(){
         return $this->belongsTo(Order::class);
     }
 
-    public function book()
-    {
+    // An order item belongs to a book
+    public function book(){
         return $this->belongsTo(Book::class);
     }
 }

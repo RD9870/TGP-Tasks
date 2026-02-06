@@ -14,6 +14,7 @@ class CartResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // return the cart data with the total price for the cart and the payment method details
         return [
             'payment_method' => [
                 'id' => $this->paymentMethod->id,

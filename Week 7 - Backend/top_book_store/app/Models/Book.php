@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    //
-
+    // The attributes that are mass assignable.
     protected $fillable = [
         'title',
         'publish_year',
@@ -17,14 +16,15 @@ class Book extends Model
         "stock",
     ];
 
+// Relationships
 
-    public function category()
-    {
+    // A book belongs to a category
+    public function category(){
         return $this->belongsTo(Category::class);
     }
 
-    public function user()
-    {
-        $this->belongsToMany(User::class, 'book_user');
+    // A book belongs to many users (many-to-many relationship)
+    public function user(){
+        return  $this->belongsToMany(User::class, 'book_user');
     }
 }

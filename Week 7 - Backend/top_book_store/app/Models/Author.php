@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
+    // The attributes that are mass assignable.
     protected $fillable = [
         'bio',
         'country',
         'user_id'
     ];
-
-
-
 }

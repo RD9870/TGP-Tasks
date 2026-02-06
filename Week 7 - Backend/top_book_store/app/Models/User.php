@@ -18,6 +18,8 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    // The attributes that are mass assignable.
     protected $fillable = [
         'name',
         'username',
@@ -31,6 +33,8 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    // The attributes that should be hidden for serialization.
     protected $hidden = [
         'password',
     ];
@@ -48,39 +52,30 @@ class User extends Authenticatable
         ];
     }
 
+    // Relationships
 
-    public function author()
-    {
+    // A user can be an author or a customer
+    public function author(){
         return $this->hasOne(Author::class);
     }
 
-    public function customer()
-    {
+    // A user can be an author or a customer
+    public function customer(){
         return $this->hasOne(Customer::class);
     }
 
-    public function books()
-    {
+    // A user can have many books (if they are an author)
+    public function books(){
         return $this->belongsToMany(Book::class, 'book_user');
     }
 
-
-    public function approve()
-    {
+    // An aurhoe has to be approved before they can add books
+    public function approve(){
         $this->status = 'approve';
         $this->save();
     }
 
-
-    // public function getStatusAttribute($value)
-    // {
-    //     if($value == 'approve')
-    //     {
-    //         return 'تم القبول';
-    //     }
-    //     return $value;
-    // }
-
+    // Translate the status to Arabic
     public function translateStatus()
     {
         if($this->status == 'approve')

@@ -17,9 +17,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\AuthorMiddleware;
 use App\Http\Middleware\CustomerMiddleware;
-// use App\Http\Middleware\UserMiddleware;
-// use App\Models\Customer;
-// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -73,7 +70,6 @@ Route::prefix('customer')->middleware(['auth:sanctum',CustomerMiddleware::class]
     Route::get('orders',[OrderController::class,'showOrders']);
 });
 
-//TODO:here and down need postman tests
 //sign up as an author route open for unauthorized users
 Route::post('author/sign-up',[AuthorAuthController::class,'signup']);
 
@@ -88,11 +84,3 @@ Route::prefix('author')->middleware(['auth:sanctum',AuthorMiddleware::class])->g
     //route for author to view the avaliable categories
     Route::apiResource('category',AuthorCategoryController::class)->only('index');
 });
-
-
-
-
-
-
-
-

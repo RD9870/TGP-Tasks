@@ -15,9 +15,12 @@ class CustomerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // check if the user is a customer
         if($request->user()->type == 'customer'){
-            return $next($request);
+        // user is a customer, allow access to the route
+        return $next($request);
         }
+        // user is not a customer, return error message
         return response()->json([
             'message'=>'you are not a customer'
         ],401);

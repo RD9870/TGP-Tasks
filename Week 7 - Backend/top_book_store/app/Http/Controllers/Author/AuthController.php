@@ -10,6 +10,7 @@ class AuthController extends Controller
 {
     public function signup(Request $request)
     {
+        // validate inputs
         $inputs = $request->validate([
             //user
             'name'=>['required'],
@@ -19,12 +20,15 @@ class AuthController extends Controller
             'bio'=>['required'],
             'country'=>['required']
         ]);
+        // add type and status
         $inputs['type'] = 'author';
         $inputs['status'] = 'approve';
-        //TODO:: make db transaction
+
+        // create user and author
         $user = User::create($inputs);
         $user->author()->create($inputs);
 
+        // return response
         return response()->json([
             'message'=>'you ware signup wait for approve'
         ],201);

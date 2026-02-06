@@ -14,6 +14,7 @@ class CartItemResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // return the cart item data with the total price for that item
         return [
             'id'=>$this->id,
             'book'=>$this->book,

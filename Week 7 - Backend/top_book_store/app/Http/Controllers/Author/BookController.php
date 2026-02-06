@@ -61,7 +61,7 @@ class BookController extends Controller
     {
          //find the book with the input is or return an error if no match
         $book = Book::findOrFail($id);
-    //validate the user input
+        //validate the user input
         $data = $request->validate([
             //use sone times bc the user ight want to update one or two fields unstead of all of them
             'title'=> ['sometimes', 'string'],
@@ -90,7 +90,7 @@ class BookController extends Controller
     {
          //find the book with the input is or return an error if no match
         $book = Book::findOrFail($id);
-    //validate the user input
+        //validate the user input
         $data = $request->validate([
             'stock'=> ['required','integer','min:0'],
         ]);
