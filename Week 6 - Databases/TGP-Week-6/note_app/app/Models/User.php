@@ -19,6 +19,8 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    // define the fillable attributes for the User model
     protected $fillable = [
         'name',
         'email',
@@ -30,6 +32,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    // define the hidden attributes for the User model
     protected $hidden = [
         'password',
         'remember_token',

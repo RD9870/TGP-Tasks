@@ -10,11 +10,12 @@ use App\Http\Controllers\CommentController;
 
 
 
+// get user info for authenticated user
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-
+// API resource routes for notes, sub-notes, users, and comments
 Route::apiResource('notes', NoteController::class);
 Route::apiResource('subNotes', SubNoteController::class);
 Route::apiResource('users', UserController::class);

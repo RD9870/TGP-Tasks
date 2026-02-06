@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the 'sub_notes' table with the specified columns
         Schema::create('sub_notes', function (Blueprint $table) {
             $table->id();
             $table->integer('main_note');

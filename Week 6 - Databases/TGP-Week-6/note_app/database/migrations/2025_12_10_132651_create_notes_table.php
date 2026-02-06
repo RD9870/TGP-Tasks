@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the 'notes' table with the specified columns
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->string('title');

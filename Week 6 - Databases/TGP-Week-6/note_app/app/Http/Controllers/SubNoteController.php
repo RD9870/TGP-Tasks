@@ -12,6 +12,7 @@ class SubNoteController extends Controller
      */
     public function index()
     {
+        // get all sub notes and return them
         return SubNote::all();
     }
 
@@ -20,6 +21,7 @@ class SubNoteController extends Controller
      */
     public function store(Request $request)
     {
+        // validate the incoming request data
         $inputs = $request->validate([
         'title'=> 'required|string|max:255',
         'description' => 'nullable|string',
@@ -27,9 +29,11 @@ class SubNoteController extends Controller
         'main_note' => 'required|integer'
         ]);
 
-    SubNote::create($inputs);
+        // create a new sub note with the validated data
+        $subNote = SubNote::create($inputs);
 
-    return response()->json(['message' => 'New sub note added'], 201);
+        // return a response with the created sub note
+        return response()->json(['message' => 'New sub note added', 'subNote' => $subNote], 201);
     }
 
     /**
@@ -37,22 +41,31 @@ class SubNoteController extends Controller
      */
     public function show(string $id)
     {
-        return SubNote::find($id);    }
+        // return the sub note with the specified id, or return a 404 error if not found
+        return SubNote::find($id);
+    }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-      $Subnote = SubNote::find($id);
+        // find the sub note by id, or return a 404 error if not found
+        $Subnote = SubNote::find($id);
+
+        // validate the incoming request data
         $inputs = $request->validate([
         'title'=> 'required|string|max:255',
         'description' => 'nullable|string',
         'isChecked' => 'boolean',
         ]);
-      $Subnote->update($inputs);
-       return response()->json($Subnote);
 
+        // update the sub note with the validated data
+        $Subnote->update($inputs);
+
+        // return a response with the updated sub note
+        return response()->json(['message' => 'Sub note updated successfully', 'subNote' => $Subnote]);
     }
 
     /**
@@ -60,9 +73,13 @@ class SubNoteController extends Controller
      */
     public function destroy(string $id)
     {
-         $Subnote = SubNote::find($id);
-      $Subnote->delete();
+        // find the sub note by id, or return a 404 error if not found
+        $Subnote = SubNote::find($id);
 
-      return response()->json(['message' => 'Sub Note deleted successfully']);
+        // delete the sub note
+        $Subnote->delete();
+
+        // return a response with a success message
+        return response()->json(['message' => 'Sub Note deleted successfully']);
     }
 }

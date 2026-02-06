@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubNote extends Model
 {
+    // The attributes that are mass assignable.
     protected $fillable = [
         'main_note',
         "title",
@@ -14,9 +15,8 @@ class SubNote extends Model
         "isChecked",
     ];
 
-
-public function note()
-{
+// Define the relationship to the Note model
+public function note(){
     return $this->belongsTo(Note::class, "main_note");
 }
 }

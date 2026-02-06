@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the 'comments' table with the specified columns
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->integer('note_id');

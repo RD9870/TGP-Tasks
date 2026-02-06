@@ -7,15 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class comment extends Model
 {
-
-     protected $fillable = [
+    // The attributes that are mass assignable.
+    protected $fillable = [
         'content',
         "note_id",
     ];
 
-
-
-public function note()
+// Define the relationship with the Note model
+    public function note()
 {
     return $this->belongsTo(Note::class, "note_id");
 }

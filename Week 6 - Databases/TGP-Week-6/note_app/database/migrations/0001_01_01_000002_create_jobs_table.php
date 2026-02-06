@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // defined these tables in a single migration to ensure they are created together
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('queue')->index();
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->unsignedInteger('created_at');
         });
 
+        // the job_batches table is used to track batches of jobs, allowing for better management and monitoring of related jobs
         Schema::create('job_batches', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('name');
@@ -34,6 +36,7 @@ return new class extends Migration
             $table->integer('finished_at')->nullable();
         });
 
+        // the failed_jobs table is used to store information about jobs that have failed, allowing for debugging and retrying of failed jobs
         Schema::create('failed_jobs', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();

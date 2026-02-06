@@ -14,6 +14,7 @@ class NoteController extends Controller
      */
     public function index()
     {
+        // get all notes with their associated subNotes and noteComments and return them
         $note = Note::all();
         return $note->Load(["subNotes", "noteComments"]);
         // return Note::all();
@@ -24,26 +25,33 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
+        // validate the incoming request data
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'isChecked' => 'boolean',
             'user_id' => 'required|integer',
         ]);
+
+        // create a new note with the validated data
         $note = Note::create($data);
+
+        // return a response with the created note
         return response()->json($note, 201);
-    }  
+    }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
+        // find the note by id, or return a 404 error if not found
         $note = Note::findOrFail($id);
         // return $note->Load("subNotes");
+        // return the note with its associated subNotes and noteComments
         return $note->Load(["subNotes", "noteComments"]);
 
-        
+
     }
 
     /**
@@ -51,15 +59,22 @@ class NoteController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // find the note by id, or return a 404 error if not found
         $note = Note::findOrFail($id);
+
+        // validate the incoming request data
         $data = $request->validate([
             'title' => 'sometimes|string|max:255',
             'description' => 'nullable|string',
             'isChecked' => 'boolean',
             'user_id' => 'integer',
         ]);
+
+        // update the note with the validated data
         $note->update($data);
-        return response()->json($note);
+
+        // return a response with the updated note
+        return response()->json(['message' => 'Note updated successfully', 'note' => $note]);
     }
 
     /**
@@ -67,8 +82,11 @@ class NoteController extends Controller
      */
     public function destroy(string $id)
     {
-    $note = Note::findOrFail($id);
+        // find the note by id, or return a 404 error if not found
+        $note = Note::findOrFail($id);
+        // delete the note
         $note->delete();
+        // return a response with a success message
         return response()->json(['message' => 'Note deleted successfully']);
     }
 }
