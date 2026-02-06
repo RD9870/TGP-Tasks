@@ -6,10 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 createRoot(document.getElementById("root")!).render(
+  // wrap the app in StrictMode to help identify potential problems
   <StrictMode>
+    {/* wrap the app in  BrowserRouter to enable routing functionality */}
     <BrowserRouter>
+      {/* wrap the app in Toaster to show user feedback messages */}
       <Toaster position="top-center" reverseOrder={false} />
       <App />
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

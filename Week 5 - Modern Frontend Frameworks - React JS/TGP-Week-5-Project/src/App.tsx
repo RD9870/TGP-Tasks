@@ -7,6 +7,7 @@ import OutOfStock from "./pages/out-of-stock";
 function App() {
   return (
     <>
+      {/* define the app routes */}
       <Routes>
         <Route path="" element={<Login />} />
         <Route path="login" element={<Login />} />
@@ -21,24 +22,3 @@ function App() {
 }
 
 export default App;
-
-// <Routes>
-//       {/* Index route */}
-//       <Route path="" element={<Login />} />
-
-//       <Route path="login" element={<Login />} />
-
-//       {/* Simple route Example */}
-//       <Route path="dashboard" element={<Dashboard />}>
-
-//         {/* Nested routes */}
-//         <Route index element={<DashboardIndex />} />
-
-//         <Route path="users" element={<Users />}>
-//           <Route index element={<UsersList />} />
-//           <Route path="add" element={<UserForm />} />
-//           <Route path=":id" element={<UserForm />} />
-//         </Route>
-
-//       </Route>
-//     </Routes>
