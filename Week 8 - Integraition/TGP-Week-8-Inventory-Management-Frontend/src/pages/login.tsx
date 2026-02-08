@@ -36,6 +36,7 @@ function Login() {
         const userInfo = await api.get<UserInfoResponse>("/user");
         const usertype = userInfo.data.type;
         localStorage.setItem("user_type", usertype);
+        localStorage.setItem("user_name", username);
         toast.success("Welcome back!");
 
         if (usertype === "cashier") {

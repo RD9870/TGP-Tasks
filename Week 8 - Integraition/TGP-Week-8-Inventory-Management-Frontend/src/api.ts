@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "http://127.0.0.1:8000/api", //"http://localhost:8000/api",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -17,22 +17,24 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      localStorage.clear(); 
-      
-      if (window.location.pathname !== "/login" && window.location.pathname !== "/") {
+      localStorage.clear();
+
+      if (
+        window.location.pathname !== "/login" &&
+        window.location.pathname !== "/"
+      ) {
         window.location.href = "/login";
       }
     }
-    return Promise.reject(error); 
-  }
+    return Promise.reject(error);
+  },
 );
-
 
 export default api;

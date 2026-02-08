@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface SidebarItem {
   id: string;
@@ -7,17 +7,17 @@ interface SidebarItem {
 }
 
 interface SidebarProps {
-  items?: SidebarItem[];
   currentPath?: string;
   isMobileMenuOpen?: boolean;
   setIsMobileMenuOpen?: (open: boolean) => void;
 }
 
+// all the potential sidebaritems
 const defaultItems: SidebarItem[] = [
   {
-    id: "dashbored",
-    label: "Dashbored",
-    path: "/dashbored",
+    id: "dashboard",
+    label: "Dashboard",
+    path: "/dashboard",
   },
   {
     id: "users",
@@ -42,28 +42,25 @@ const defaultItems: SidebarItem[] = [
 ];
 
 function Sidebar({
-  items = defaultItems,
   currentPath,
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }: SidebarProps) {
-  const location = useLocation();
-  const activePath = currentPath || location.pathname;
+  // get the path user is currently in
+  const activePath = currentPath;
+  // get user type
+  const userType = localStorage.getItem("user_type")!.trim().toLowerCase();
+  //
+  // const isAdmin = userType === "admin";
 
-  // --- منطق الصلاحيات المحسن ---
-  const userType = (localStorage.getItem("user_type") || "")
-    .trim()
-    .toLowerCase();
-  const isAdmin = userType === "admin";
-
-  // فلترة العناصر بشكل أكثر دقة
-  const filteredItems = items.filter((item) => {
-    // إذا كان المستخدم ليس أدمن (يعني manager أو cashier أو غيره)
-    if (!isAdmin) {
+  // filter the items base on the role
+  const filteredItems = defaultItems.filter((item) => {
+    // if the type is not admin
+    if (userType != "admin") {
       const itemId = item.id.toLowerCase();
       const itemPath = item.path.toLowerCase();
 
-      // إخفاء إذا كان الـ ID أو المسار يحتوي على كلمة user أو profit
+      // the path include one of these keywords skip them
       if (
         itemId.includes("user") ||
         itemId.includes("profit") ||
@@ -77,7 +74,7 @@ function Sidebar({
 
   return (
     <>
-      {/* Overlay para mobile */}
+      {/* Overlay for mobile */}
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
@@ -91,12 +88,15 @@ function Sidebar({
           <h1 className="text-xl font-bold">Storage Manager</h1>
         </div>
         <nav>
+          {/* map the filtered nav items to the side bar */}
           {filteredItems.map((item) => {
+            //  color the text based on activity
             const isActive = activePath === item.path;
             const itemClasses = isActive
-              ? "flex items-center gap-3 px-6 py-3 bg-primary-500 hover:bg-primary-600 transition-colors"
+              ? "flex items-center gap-3 px-6 py-3 bg-red-500 hover:bg-primary-600 transition-colors"
               : "flex items-center gap-3 px-6 py-3 text-gray-300 hover:bg-gray-700 transition-colors";
 
+            // retuen item
             return (
               <Link key={item.id} to={item.path} className={itemClasses}>
                 <span>{item.label}</span>
@@ -118,6 +118,7 @@ function Sidebar({
             onClick={() => setIsMobileMenuOpen?.(false)}
             className="text-gray-300 hover:text-white"
           >
+            {/* menure icon */}
             <svg
               className="w-6 h-6"
               fill="none"
@@ -134,12 +135,15 @@ function Sidebar({
           </button>
         </div>
         <nav>
+          {/* map the filtered nav items to the side bar on mobile*/}
           {filteredItems.map((item) => {
+            //  color the text based on activity
             const isActive = activePath === item.path;
             const itemClasses = isActive
               ? "flex items-center gap-3 px-6 py-3 bg-primary-500 hover:bg-primary-600 transition-colors"
               : "flex items-center gap-3 px-6 py-3 text-gray-300 hover:bg-gray-700 transition-colors";
 
+            // retuen item
             return (
               <Link
                 key={item.id}

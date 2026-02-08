@@ -13,25 +13,30 @@ import Dashboard from "./pages/dashboard";
 function AppContent() {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const userRole = localStorage.getItem("user_type");
+  const userName = localStorage.getItem("user_name");
 
-  const navItems = [
-    { id: "dashboard", label: "Dashboard", path: "/dashboard" },
-    { id: "users", label: "Users", path: "/users" },
-    { id: "products", label: "Products", path: "/products" },
-    { id: "Categories", label: "Categories", path: "/categories" },
-    { id: "Profits", label: "Profits", path: "/profitDetails" },
-  ];
+  // const navItems = [
+  //   { id: "dashboard", label: "Dashboard", path: "/dashboard" },
+  //   { id: "users", label: "Users", path: "/users" },
+  //   { id: "products", label: "Products", path: "/products" },
+  //   { id: "Categories", label: "Categories", path: "/categories" },
+  //   { id: "Profits", label: "Profits", path: "/profitDetails" },
+  // ];
 
   return (
     <div className="flex">
       <Sidebar
-        items={navItems}
         currentPath={location.pathname}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
       <main className="md:ml-60 flex-1 w-full">
-        <Header onMenuClick={() => setIsMobileMenuOpen(true)} />
+        <Header
+          userRole={userRole!}
+          userName={userName!}
+          onMenuClick={() => setIsMobileMenuOpen(true)}
+        />
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="profitDetails" element={<ProfitDetails />} />
