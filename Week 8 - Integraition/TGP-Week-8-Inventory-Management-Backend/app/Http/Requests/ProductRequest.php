@@ -21,6 +21,7 @@ class ProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        // return the validation rules
         return [
             'code'=>['required','string','unique:products,code'],
             'name'=>['required','string'],

@@ -12,41 +12,54 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\ImportCompanyController;
 
+// get authenticated user info
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+// authentication routes
 Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('logout', [AuthController::class, 'logout']);
 
+// product routes
 Route::middleware('auth:sanctum')->group(function() {
+    // allow admin, manager, and cashier to view products
     Route::get('products', [ProductController::class, 'index'])->middleware(CheckUserRole::class.':admin,manager,cashier');
+    // allow admin and manager to view specific product details
     Route::get('products/{id}', [ProductController::class, 'show'])->middleware(CheckUserRole::class.':admin,manager');
+    // allow admin and manager to create products
     Route::post('products', [ProductController::class, 'store'])->middleware(CheckUserRole::class.':admin,manager');
+    // allow only admin to update and delete products
     Route::put('products/{id}', [ProductController::class, 'update'])->middleware(CheckUserRole::class.':admin');
     Route::delete('products/{id}', [ProductController::class, 'destroy'])->middleware(CheckUserRole::class.':admin');
-Route::post('/receipts', [ReceiptController::class, 'store'])->middleware([CheckUserRole::class . ':cashier']);
+
+// receipt routes
+    // allow cashier to create receipts
+    Route::post('/receipts', [ReceiptController::class, 'store'])->middleware([CheckUserRole::class . ':cashier']);
+    // allow admin and manager to view monthly profits
     Route::get('/monthly-rate', [ProfitController::class, 'monthlyProfitRate'])->middleware(CheckUserRole::class.':admin,manager');
+    // allow only admin to view detailed profit report
     Route::get('/detailed', [ProfitController::class, 'detailedProfits'])->middleware(CheckUserRole::class.':admin');
 
-    //admin routes
-Route::apiResource('users', UserController::class)->middleware([CheckUserRole::class . ':admin']);
-
+//admin routes
+    // all user management routes
+    Route::apiResource('users', UserController::class)->middleware([CheckUserRole::class . ':admin']);
     //category crud route
     Route::apiResource('categories',CategoryController::class)->middleware([CheckUserRole::class . ':admin']);
     //subcategory crud route
     Route::apiResource('subcategories',SubcategoryController::class)->middleware(CheckUserRole::class.':admin');
-
-Route::get('categoriesfilter',[CategoryController::class,'filtercut'])->middleware(CheckUserRole::class.':manager,admin');
+    // allow admin and manager to get the categories and their subcategories for filtering
+    Route::get('categoriesfilter',[CategoryController::class,'filtercut'])->middleware(CheckUserRole::class.':manager,admin');
     //get the top and bottom products
     Route::get('products/overview/{limit}', [ProductController::class,"productsOverview"])->middleware(CheckUserRole::class.':admin,manager');
     //get the number of low stock items
     Route::get('lowStockCount', [ProductController::class,"lowStockCount"])->middleware(CheckUserRole::class.':admin,manager');
+    // get the number of the products in a specific subcategory
     Route::get('products/sub/{subCategory}', [ProductController::class, 'filterBySub'])->middleware(CheckUserRole::class.':admin,manager,cashier');
-
-
-Route::get('manufacturers', [ManufacturerController::class, 'index']);
-Route::get('import-companies', [ImportCompanyController::class, 'index']);
+    // get the list of manufacturers
+    Route::get('manufacturers', [ManufacturerController::class, 'index']);
+    // get the list of import companies
+    Route::get('import-companies', [ImportCompanyController::class, 'index']);
 
 //manager routes
     //category crud route

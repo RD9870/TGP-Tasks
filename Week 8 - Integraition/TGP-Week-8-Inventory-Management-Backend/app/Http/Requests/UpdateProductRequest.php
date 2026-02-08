@@ -14,34 +14,31 @@ class UpdateProductRequest extends FormRequest
 
     public function rules(): array
     {
+        // return the validation rules
         return [
-'code' => [
+            // validation rules for updating a product
+            'code' => [
                 'sometimes',
                 'string',
                 Rule::unique('products', 'code')->ignore($this->route('id')),
             ],
             'name' => ['sometimes', 'string', 'max:255'],
-
             'subcategory_id' => [
                 'sometimes',
                 'integer',
                 'exists:subcategories,id'
             ],
-
             'price' => ['sometimes', 'numeric', 'min:0'],
-
             'manufacture_id' => [
                 'sometimes',
                 'integer',
                 'exists:manufacturers,id'
             ],
-
             'import_company_id' => [
                 'sometimes',
                 'integer',
                 'exists:import_companies,id'
             ],
-
             'image' => ['sometimes', 'nullable', 'string'],
             'quantity' => ['sometimes', 'integer', 'min:0'],
         ];

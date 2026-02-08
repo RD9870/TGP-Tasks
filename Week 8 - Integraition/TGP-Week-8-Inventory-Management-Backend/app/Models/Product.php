@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    // Mass assignable attributes
     protected $fillable =
     [
     'code',
@@ -18,26 +19,24 @@ class Product extends Model
     'minimum',
     'isStockLow',
     ];
-       public function manufacture()
-    {
+
+    // product belongs to a manufacturer
+    public function manufacture() {
         return $this->belongsTo(Manufacturer::class, 'manufacture_id');
     }
 
-    public function importCompany()
-    {
+    // product belongs to an import company
+    public function importCompany(){
         return $this->belongsTo(ImportCompany::class, 'import_company_id');
     }
 
-    public function subcategory()
-    {
+    // product belongs to a subcategory
+    public function subcategory(){
         return $this->belongsTo(Subcategory::class ,'subcategory_id');
     }
- public function stock()
-    {
+
+    // product has one stock
+    public function stock(){
         return $this->hasOne(Stock::class);
     }
-        //     public function stock(){
-    //     return $this->hasMany(Stock::class);
-    // }
-
 }

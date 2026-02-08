@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImportCompany extends Model
 {
-     protected $fillable = [
+    // Mass assignable attributes
+    protected $fillable = [
         'name',
         'email',
         'phone',
         'address',
     ];
-     public function products()
-    {
+
+    // Define relationship with import company has many products
+    public function products(){
         return $this->hasMany(Product::class);
     }
 }

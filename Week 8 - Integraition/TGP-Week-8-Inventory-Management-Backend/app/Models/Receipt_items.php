@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Receipt_items extends Model
 {
+    // Mass assignable attributes
     protected $fillable =
     [
     'recipt_id',
@@ -14,12 +15,13 @@ class Receipt_items extends Model
     'item_total',
     ];
 
-   public function receipt()
-{
+    // receipt item belongs to a receipt
+    public function receipt(){
     return $this->belongsTo(Receipt::class, 'recipt_id');
 }
-public function product()
-    {
+
+// receipt item belongs to a product
+public function product(){
         return $this->belongsTo(Product::class);
     }
 }

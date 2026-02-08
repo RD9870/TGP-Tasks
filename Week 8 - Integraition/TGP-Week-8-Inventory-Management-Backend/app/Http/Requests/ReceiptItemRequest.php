@@ -21,13 +21,12 @@ class ReceiptItemRequest extends FormRequest
      */
     public function rules(): array
     {
+        // return the validation rules
         return [
             'receipt_id'=>['required','integer'],
             'quantity'=>['required','integer'],
             'code'=>['required','string'],
             'item_total'=>['required','numeric'],
-
-
         ];
     }
 }

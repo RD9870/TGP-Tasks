@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
 {
+    // Mass assignable attributes
     protected $fillable =
     [
     'cashier_id',
     'total',
     ];
-    public function items()
-{
+
+    // receipt has many receipt items
+    public function items() {
     return $this->hasMany(Receipt_items::class, 'recipt_id');
 }
 }

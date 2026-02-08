@@ -22,8 +22,11 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        // check if the request method is POST (create) or PUT/PATCH (update)
         $isCreate = $this->isMethod('Post');
+        // set validation rules based on the request method
         $requirement = $isCreate? "required" : "sometimes";
+        // return the validation rules
         return [
             'username'=>[$requirement,'string'],
             'password'=>[$requirement,'string'],

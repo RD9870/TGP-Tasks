@@ -13,6 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        // get all users except admins
         $authorQuery = User::where('type','!=' ,'admin')->get();
         return $authorQuery;
     }
@@ -21,7 +22,9 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(UserRequest $request){
+        // create a new user with the validated request data
         $user =User::create($request->validated());
+        // return a success message
         return response()->json([
             'message'=>'new user created',
             'user'=> $user
@@ -33,12 +36,15 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
+        // find the user with the given id
         $user = User::find($id);
+        // return the user data if found
         if($user){
             return response()->json([
             'userdata'=> $user,
             ]);
         }
+        // return error message if user not found
         else {
             return response()->json([
             'message'=>'Sorry, this user was not found'
@@ -51,8 +57,9 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, string $id)
     {
-
+        // find the user with the given id
         $user = User::find($id);
+        // update and return the user data if found
         if($user){
             $input = $request->validated();
             $user->update($input);
@@ -61,6 +68,7 @@ class UserController extends Controller
             'userdata'=> $user,
             ]);
         }
+        // return error message if user not found
         else {
             return response()->json([
             'message'=>'Sorry, user was not found'
@@ -73,17 +81,20 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-         $user = User::find($id);
-         if($user){
-             $user->delete();
-             return response()->json([
-                 'message'=>"user ". $user->username ." has been deleted"
-             ], 200);
-         }
-         else{
-                 return response()->json([
+    // find the user with the given id
+    $user = User::find($id);
+    // delete and return a success message if found
+        if($user){
+            $user->delete();
+            return response()->json([
+                'message'=>"user ". $user->username ." has been deleted"
+            ], 200);
+        }
+        // return error message if user not found
+        else{
+        return response()->json([
             'message'=>'Sorry, user was not found'
         ], 404);
-         }
+        }
     }
 }

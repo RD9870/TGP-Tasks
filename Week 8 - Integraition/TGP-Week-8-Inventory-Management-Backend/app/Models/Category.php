@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable =
-    [
-    'name',
-    ];
-public function subcategories()
-    {
+    protected $fillable = ['name'];
+
+    // Define relationship category has many subcategories
+    public function subcategories() {
         return $this->hasMany(Subcategory::class);
     }
 }

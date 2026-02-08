@@ -18,6 +18,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    // Mass assignable attributes
     protected $fillable = [
         'username',
         'password',

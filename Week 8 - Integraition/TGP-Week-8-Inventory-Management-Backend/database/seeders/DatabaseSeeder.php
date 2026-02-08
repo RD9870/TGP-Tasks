@@ -107,18 +107,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // 9. Seed Receipt Items (At least 7 entries)
-        // Note: I used 'recipt_id' as written in your migration typo
-        // for ($i = 1; $i <= 10; $i++) {
-        //     DB::table('receipt_items')->insert([
-        //         'recipt_id' => rand(1, 7),
-        //         'product_id' => rand(1, 20),
-        //         'quantity' => rand(1, 5),
-        //         'item_total' => rand(10, 100),
-        //         'created_at' => now(),
-        //     ]);
-        // }
-
-         $items = [
+        $items = [
             // --- BEST SELLERS ---
             // Product 1 (Milk) - Sold many times in large amounts
             ['recipt_id' => 1, 'product_id' => 1, 'quantity' => 10, 'item_total' => 35.00],
