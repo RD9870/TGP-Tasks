@@ -29,6 +29,9 @@ function Login() {
         password: password,
       });
 
+      console.debug(`username ${username}`);
+      console.debug(`password ${password}`);
+
       const token = response.data?.access_token;
 
       if (token) {

@@ -13,29 +13,25 @@ import {
 } from "lucide-react";
 import api from "../api";
 import toast, { Toaster } from "react-hot-toast";
-
-interface Subcategory {
-  id: number;
-  name: string;
-  category_id: number;
-}
-
-interface Category {
-  id: number;
-  name: string;
-}
+import type { Category } from "../types/category";
+import type { Subcategory } from "../types/subcategory";
+import CategoryModal from "../modals/categoryModal";
 
 function CategoriesPage() {
+  // get user type
   const userType = localStorage.getItem("user_type");
-
+  // check if the user is an admin
   const isAdmin = userType === "admin";
-
+  // initialize the correxct urls
   const catBaseUrl = isAdmin ? "/categories" : "/categoriesm";
   const subBaseUrl = isAdmin ? "/subcategories" : "/subcategoriesm";
-
+  // initialize the category list
   const [categories, setCategories] = useState<Category[]>([]);
+  // initialize the subcategory list
   const [subCategories, setSubCategories] = useState<Subcategory[]>([]);
+  // initialize the loading indicator
   const [loading, setLoading] = useState(true);
+  //
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const [isCatModalOpen, setIsCatModalOpen] = useState(false);
@@ -49,7 +45,6 @@ function CategoriesPage() {
     type: "cat" | "sub";
   } | null>(null);
 
-  const [catForm, setCatForm] = useState({ name: "" });
   const [subForm, setSubForm] = useState({ name: "", category_id: 0 });
 
   const fetchData = async () => {
@@ -75,26 +70,8 @@ function CategoriesPage() {
   const openCatModal = (cat: Category | null = null) => {
     if (!isAdmin && cat !== null) return;
     setCurrentCat(cat);
-    setCatForm({ name: cat?.name || "" });
+    // setCatForm({ name: cat?.name || "" });
     setIsCatModalOpen(true);
-  };
-
-  const handleCatSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const tid = toast.loading("Saving category...");
-    try {
-      if (currentCat?.id) {
-        await api.put(`${catBaseUrl}/${currentCat.id}`, catForm);
-        toast.success("Category updated", { id: tid });
-      } else {
-        await api.post(catBaseUrl, catForm);
-        toast.success("Category created", { id: tid });
-      }
-      fetchData();
-      setIsCatModalOpen(false);
-    } catch (err: any) {
-      toast.error("Action failed", { id: tid });
-    }
   };
 
   const openSubModal = (sub: Subcategory | null = null, catId?: number) => {
@@ -298,41 +275,17 @@ function CategoriesPage() {
         </table>
       </div>
 
-      {isCatModalOpen && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex justify-center items-center p-4 z-50 animate-in fade-in duration-200">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
-            <div className="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
-              <h2 className="text-xl font-bold flex items-center gap-2 text-white">
-                <Layers className="text-indigo-500" />{" "}
-                {currentCat ? "Edit Category" : "New Category"}
-              </h2>
-              <button
-                onClick={() => setIsCatModalOpen(false)}
-                className="text-slate-500 hover:text-white transition-colors"
-              >
-                <X size={24} />
-              </button>
-            </div>
-            <form onSubmit={handleCatSubmit} className="p-8 space-y-6">
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">
-                  Category Name
-                </label>
-                <input
-                  className="w-full bg-slate-800/50 border border-slate-700 text-white rounded-xl p-3 outline-none focus:ring-2 focus:ring-indigo-500/50"
-                  value={catForm.name}
-                  onChange={(e) => setCatForm({ name: e.target.value })}
-                  placeholder="e.g. Electronics"
-                  required
-                />
-              </div>
-              <button className="w-full bg-indigo-600 py-4 rounded-xl font-black text-sm tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20">
-                SAVE CATEGORY
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+      <CategoryModal
+        editingCategory={currentCat}
+        // currentCat={}
+        isAdmin={isAdmin}
+        isOpen={isCatModalOpen}
+        onClose={() => {
+          setIsCatModalOpen(false);
+          setCurrentCat(null);
+          fetchData();
+        }}
+      />
 
       {isSubModalOpen && (
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex justify-center items-center p-4 z-50 animate-in fade-in duration-200">

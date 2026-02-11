@@ -2,7 +2,7 @@ import { ThumbsDown, ShoppingCart, TrendingUp, Medal } from "lucide-react";
 import MetricCard from "../components/ui/MetricCard";
 import api from "../api";
 import { useEffect, useState } from "react";
-import ProductsDetailsSection from "../components/top_5_section";
+import ProductsDetailsSection from "../components/dashboard/top_5_section";
 import { useNavigate } from "react-router-dom";
 
 interface ProductSale {

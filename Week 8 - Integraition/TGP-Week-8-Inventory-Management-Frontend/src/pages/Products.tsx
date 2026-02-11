@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import api from "../api";
 import { Loader, Plus, AlertTriangle, Trash2 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast"; // Professional notification library
-import SearchAndFilter from "../components/searchAndFilter";
 import PageLoader from "./pageLoader";
 import ProductCard from "../components/ui/productCard";
-import ProductModal from "../components/productModal";
+import ProductModal from "../modals/productModal";
+import SearchAndFilter from "../components/products/searchAndFilter";
 
 function ProductsPage() {
   // --- Interfaces ---
@@ -63,7 +63,7 @@ function ProductsPage() {
   // Delete Confirmation States
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [productIdToDelete, setProductIdToDelete] = useState<number | null>(
-    null
+    null,
   );
   const [isDeleting, setIsDeleting] = useState(false);
 
