@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api";
 import { Loader, Plus, AlertTriangle, Trash2 } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast"; // Professional notification library
+import toast from "react-hot-toast"; // Professional notification library
 import PageLoader from "./pageLoader";
 import ProductCard from "../components/ui/productCard";
 import ProductModal from "../modals/productModal";
@@ -154,8 +154,6 @@ function ProductsPage() {
 
   return (
     <div className="p-6 bg-slate-950 min-h-screen text-white">
-      <Toaster position="top-right" reverseOrder={false} />
-
       <div className="max-w-7xl mx-auto">
         <SearchAndFilter
           onSearch={handleSearch}

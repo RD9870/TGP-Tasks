@@ -21,7 +21,7 @@ function PageLoader() {
           </svg>
           <span className="sr-only">Loading...</span>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 }

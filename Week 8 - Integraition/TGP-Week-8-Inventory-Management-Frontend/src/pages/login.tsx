@@ -2,38 +2,37 @@ import { useState, type FormEvent } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-
-interface LoginResponse {
-  access_token: string;
-}
-
-interface UserInfoResponse {
-  type: string;
-}
+import type { LoginResponse } from "../types";
+import type { UserInfoResponse } from "../types/apiResponses";
 
 function Login() {
+  // user name and password variables
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  // errror text
   const [error, setError] = useState<string | null>(null);
+  // lading indicator
   const [loading, setLoading] = useState<boolean>(false);
+  // navigation variable
   const navigate = useNavigate();
 
+  // submit user input
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    // show loading indicator
     setLoading(true);
     setError(null);
-
     try {
+      // send the input data to the backend
       const response = await api.post<LoginResponse>("/login", {
         username: username,
         password: password,
       });
 
-      console.debug(`username ${username}`);
-      console.debug(`password ${password}`);
-
+      // get the access token
       const token = response.data?.access_token;
 
+      // save it to the local storgae and get the user type
       if (token) {
         localStorage.setItem("token", token);
         const userInfo = await api.get<UserInfoResponse>("/user");
@@ -42,6 +41,7 @@ function Login() {
         localStorage.setItem("user_name", username);
         toast.success("Welcome back!");
 
+        // navigate to the correct page for each role
         if (usertype === "cashier") {
           navigate("/receipt");
         } else {
@@ -49,6 +49,7 @@ function Login() {
         }
       }
     } catch (err: any) {
+      // show errors
       localStorage.clear();
       if (err.response && err.response.status === 401) {
         setError("Invalid username or password. Please try again.");
@@ -58,20 +59,24 @@ function Login() {
         toast.error("Login failed");
       }
     } finally {
+      // remove loading indicator
       setLoading(false);
     }
   };
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      {/* title */}
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
           Sign in to your account
         </h2>
       </div>
 
+      {/* form */}
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* username */}
           <div>
             <label
               htmlFor="username"
@@ -92,6 +97,7 @@ function Login() {
             </div>
           </div>
 
+          {/* password */}
           <div>
             <label
               htmlFor="password"
@@ -112,12 +118,14 @@ function Login() {
             </div>
           </div>
 
+          {/* error display */}
           {error && (
             <div className="text-red-400 text-sm font-medium mt-2 bg-red-400/10 p-3 rounded border border-red-400/20">
               {error}
             </div>
           )}
 
+          {/* submit btn */}
           <div>
             <button
               type="submit"

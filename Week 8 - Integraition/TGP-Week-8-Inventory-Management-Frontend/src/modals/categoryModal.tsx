@@ -7,7 +7,8 @@ import { Modal, ModalBody, ModalHeader } from "flowbite-react";
 
 interface CategoryModalProps {
   isOpen: boolean;
-  isAdmin: boolean;
+  // isAdmin: boolean;
+  catBaseUrl: string;
   //   currentCat: Category | null;
   onClose: () => void;
   editingCategory: Category | null;
@@ -15,12 +16,13 @@ interface CategoryModalProps {
 
 function CategoryModal({
   isOpen,
-  isAdmin,
+  // isAdmin,
+  catBaseUrl,
   //   currentCat,
   onClose,
   editingCategory,
 }: CategoryModalProps) {
-  const catBaseUrl = isAdmin ? "/categories" : "/categoriesm";
+  // const catBaseUrl = isAdmin ? "/categories" : "/categoriesm";
   const [catForm, setCatForm] = useState({ name: "" });
   //   const [currentCat, setCurrentCat] = useState<Category | null>(null);
   const [loading, setLoading] = useState(true);
@@ -62,6 +64,7 @@ function CategoryModal({
     e.preventDefault();
     const tid = toast.loading("Saving category...");
     try {
+      setLoading(true);
       if (editingCategory?.id) {
         const response = await api.put(
           `${catBaseUrl}/${editingCategory.id}`,
@@ -76,6 +79,8 @@ function CategoryModal({
       onClose();
     } catch (err: any) {
       toast.error("Action failed", { id: tid });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -106,7 +111,10 @@ function CategoryModal({
                   <X size={24} />
                 </button>
               </div>
-              <form onSubmit={handleCatSubmit} className="p-8 space-y-6">
+              <form
+                onSubmit={loading ? undefined : handleCatSubmit}
+                className="p-8 space-y-6"
+              >
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">
                     Category Name
@@ -120,7 +128,7 @@ function CategoryModal({
                   />
                 </div>
                 <button className="w-full bg-indigo-600 py-4 rounded-xl font-black text-sm tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20">
-                  SAVE CATEGORY
+                  {loading ? "Saving...." : "SAVE CATEGORY"}
                 </button>
               </form>
             </div>

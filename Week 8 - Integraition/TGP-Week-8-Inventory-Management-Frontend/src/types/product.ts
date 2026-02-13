@@ -6,3 +6,17 @@ export interface Product {
   price?: number | string;
   total_quantity?: number | string;
 }
+
+export interface ProductSale {
+  product_id: number;
+  name: string;
+  total_quantity: string;
+  price: number;
+  image: string;
+}
+
+export interface LowStockProduct {
+  id: number;
+  name: string;
+  image: string;
+}

@@ -10,7 +10,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import api from "../api";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 interface User {
   id?: number;
@@ -108,17 +108,6 @@ function UsersPage() {
 
   return (
     <div className="min-h-screen bg-[#0f172a] p-4 md:p-8 font-sans text-slate-100">
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          style: {
-            background: "#1e293b",
-            color: "#fff",
-            border: "1px solid #334155",
-          },
-        }}
-      />
-
       <div className="max-w-5xl mx-auto mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-extrabold text-white">
@@ -178,8 +167,8 @@ function UsersPage() {
                         user.type === "manager"
                           ? "bg-purple-500/10 text-purple-400 border-purple-500/20"
                           : user.type === "cashier"
-                          ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
-                          : "bg-blue-500/10 text-blue-400 border-blue-500/20"
+                            ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                            : "bg-blue-500/10 text-blue-400 border-blue-500/20"
                       }`}
                     >
                       {user.type}

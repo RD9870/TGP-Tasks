@@ -4,79 +4,64 @@ import api from "../api";
 import { useEffect, useState } from "react";
 import ProductsDetailsSection from "../components/dashboard/top_5_section";
 import { useNavigate } from "react-router-dom";
-
-interface ProductSale {
-  product_id: number;
-  name: string;
-  total_quantity: string;
-  price: number;
-  image: string;
-}
-
-interface LowStockProduct {
-  id: number;
-  name: string;
-  image: string;
-}
-
-interface ProductsOverviewResponse {
-  "best sellers": ProductSale[];
-  "worst sellers": ProductSale[];
-}
-
-interface MonthlyRateResponse {
-  month: number;
-  year: number;
-  total_profit: number;
-}
-
-interface lowStockProductsResponse {
-  "number-of-low-stock-items": number;
-  items: LowStockProduct[];
-}
+import type {
+  lowStockProductsResponse,
+  MonthlyRateResponse,
+  ProductsOverviewResponse,
+} from "../types/apiResponses";
+import toast from "react-hot-toast";
 
 function Dashboard() {
+  // navigation
   const navigate = useNavigate();
-
+  // user type for the profile portion
   const userType = localStorage.getItem("user_type");
-
+  // products lists
   const [worstAndBestSellers, setworstAndBestSellers] =
     useState<ProductsOverviewResponse | null>(null);
   const [MonthlyProfit, setMonthlyProfit] =
     useState<MonthlyRateResponse | null>(null);
   const [lowStockProducts, setLowStockProducts] =
     useState<lowStockProductsResponse | null>(null);
+  // loading indicator
   const [loading, setLoading] = useState(true);
-
+  // open model variables
   const [showTopProducts, setShowTopProducts] = useState(false);
   const [showWorstProducts, setShowWorstProducts] = useState(false);
   const [showLowStockProducts, setShowLowStockProducts] = useState(false);
 
+  // get data from the backend
   const getStackedData = async () => {
     try {
+      // show loadinf indicator
       setLoading(true);
       const [ovRes, profitRes, stockRes] = await Promise.all([
         api.get<ProductsOverviewResponse>("/products/overview/5"),
         api.get<MonthlyRateResponse>("/monthly-rate"),
         api.get<lowStockProductsResponse>("/lowStockCount"),
       ]);
-
+      // set tghe retrived values
       setworstAndBestSellers(ovRes.data);
       setMonthlyProfit(profitRes.data);
       setLowStockProducts(stockRes.data);
     } catch (err: any) {
+      //catch error and show it in the console and ui
       console.error("Error fetching data", err);
+      toast.error("Error fetching data");
     } finally {
+      // remove loading indicator
       setLoading(false);
     }
   };
 
+  // get the data once after the ui is rendered
   useEffect(() => {
     getStackedData();
   }, []);
 
   return (
     <div className="min-h-screen bg-[#0f172a] p-4 md:p-8 font-sans text-slate-100">
+      {/* title and subtitle */}
       <div className="max-w-7xl mx-auto mb-10">
         <h1 className="text-3xl font-extrabold text-white">
           Dashboard Overview
@@ -86,7 +71,9 @@ function Dashboard() {
         </p>
       </div>
 
+      {/* cards */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* best seller cards */}
         <MetricCard
           title="Best seller"
           value={
@@ -111,6 +98,7 @@ function Dashboard() {
           }}
         />
 
+        {/* worst sellers card */}
         <MetricCard
           title="Worst seller"
           value={
@@ -135,6 +123,7 @@ function Dashboard() {
           }}
         />
 
+        {/* low stock card */}
         <MetricCard
           title="Low stock items"
           value={
@@ -159,6 +148,7 @@ function Dashboard() {
           }}
         />
 
+        {/* profits */}
         <MetricCard
           title="Monthly Profit"
           value={
@@ -173,6 +163,7 @@ function Dashboard() {
         />
       </div>
 
+      {/* best sellers */}
       <div className="max-w-7xl mx-auto mt-10 space-y-6">
         {showTopProducts && worstAndBestSellers?.["best sellers"] && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
@@ -184,6 +175,7 @@ function Dashboard() {
           </div>
         )}
 
+        {/* worst sellers */}
         {showWorstProducts && worstAndBestSellers?.["worst sellers"] && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
             <ProductsDetailsSection
@@ -194,6 +186,7 @@ function Dashboard() {
           </div>
         )}
 
+        {/* low stock */}
         {showLowStockProducts && lowStockProducts?.items && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
             <ProductsDetailsSection
