@@ -69,6 +69,7 @@ function ProductsPage() {
 
   // --- Logic Functions ---
 
+  // get backend data
   const getStackedData = async (url: string = "/products") => {
     setIsLoading(true);
     try {
@@ -83,7 +84,9 @@ function ProductsPage() {
     }
   };
 
+  // search for the keyword
   const handleSearch = async (searchTerm: string) => {
+    // reset the list if no keyword
     if (!searchTerm) {
       getStackedData();
       return;
@@ -102,6 +105,7 @@ function ProductsPage() {
     }
   };
 
+  // apply the selected filters
   const onApplyFilter = async (subCategory: string) => {
     setIsLoading(true);
     setpageLinks([]);
@@ -115,26 +119,27 @@ function ProductsPage() {
     }
   };
 
+  // show the correct message
   const handleModalSuccess = () => {
     const message = editingProduct
       ? "Product updated successfully! "
       : "New product added successfully! ";
-
     toast.success(message);
     setIsModalOpen(false);
     setEditingProduct(null);
     getStackedData(); // Refresh list
   };
 
+  // oepn deletion modal
   const openDeleteConfirm = (id: number) => {
     setProductIdToDelete(id);
     setIsDeleteModalOpen(true);
   };
 
+  // delete a product
   const confirmDelete = async () => {
     if (productIdToDelete === null) return;
     setIsDeleting(true);
-
     try {
       await api.delete(`products/${productIdToDelete}`);
       setProducts(products.filter((p) => p.id !== productIdToDelete));
@@ -148,6 +153,7 @@ function ProductsPage() {
     }
   };
 
+  // get data after initial rendering
   useEffect(() => {
     getStackedData();
   }, []);
@@ -155,18 +161,21 @@ function ProductsPage() {
   return (
     <div className="p-6 bg-slate-950 min-h-screen text-white">
       <div className="max-w-7xl mx-auto">
+        {/* searchbar */}
         <SearchAndFilter
           onSearch={handleSearch}
           onClear={getStackedData}
           onFilter={onApplyFilter}
         />
 
+        {/* loading indicator */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
           {isLoading ? (
             <div className="text-center py-20 col-span-full flex flex-col items-center justify-center">
               <PageLoader />
             </div>
           ) : (
+            // no products error
             <>
               {products.length === 0 ? (
                 <div className="text-center col-span-full py-20 flex flex-col items-center justify-center">
@@ -176,6 +185,7 @@ function ProductsPage() {
                   </p>
                 </div>
               ) : (
+                // add product btn
                 <>
                   <div className="col-span-full flex justify-end mb-2">
                     <button
@@ -190,6 +200,7 @@ function ProductsPage() {
                     </button>
                   </div>
 
+                  {/* product grid */}
                   {products.map((product) => (
                     <ProductCard
                       key={product.id}
@@ -202,6 +213,7 @@ function ProductsPage() {
                     />
                   ))}
 
+                  {/* add or edit product modal */}
                   <ProductModal
                     isOpen={isModalOpen}
                     onClose={() => {
@@ -245,6 +257,7 @@ function ProductsPage() {
         </nav>
       )}
 
+      {/* deletion modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl max-w-md w-full shadow-2xl">
@@ -252,7 +265,7 @@ function ProductsPage() {
               <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-red-900/20 mb-6">
                 <AlertTriangle className="h-10 w-10 text-red-500" />
               </div>
-
+              {/* title and subtitle */}
               <h3 className="text-2xl font-bold text-white mb-3">
                 Delete Product?
               </h3>
@@ -260,7 +273,7 @@ function ProductsPage() {
                 Are you sure you want to delete this product? This action cannot
                 be undone.
               </p>
-
+              {/* action btns */}
               <div className="flex gap-4">
                 <button
                   disabled={isDeleting}

@@ -10,11 +10,13 @@ interface ProfitDetail {
 }
 
 function ProfitDetails() {
+  // variables to store important data
   const [profits, setProfits] = useState<ProfitDetail[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
+  // get data after ui renders
   useEffect(() => {
     const fetchDetailedProfits = async () => {
       try {
@@ -28,13 +30,14 @@ function ProfitDetails() {
         setLoading(false);
       }
     };
-
     fetchDetailedProfits();
   }, []);
 
+  // calculate profits
   const totalProfitSum = profits.reduce((acc, curr) => acc + curr.profit, 0);
   const totalUnits = profits.reduce((sum, item) => sum + item.quantity_sold, 0);
 
+  // loading status
   if (loading) {
     return (
       <div className="min-h-screen bg-[#0f172a] flex flex-col justify-center items-center">
@@ -50,12 +53,15 @@ function ProfitDetails() {
     <div className="min-h-screen bg-[#0f172a] p-4 md:p-8 font-sans text-slate-100">
       <div className="max-w-5xl mx-auto mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
+          {/* back btn */}
           <button
             onClick={() => navigate("/dashboard")}
             className="flex items-center gap-2 text-slate-500 hover:text-white transition-colors mb-4 text-xs font-bold uppercase tracking-widest"
           >
             <ArrowLeft size={14} /> Back to Dashboard
           </button>
+
+          {/* title and subtitle*/}
           <h1 className="text-3xl font-extrabold text-white flex items-center gap-3">
             <TrendingUp className="text-emerald-400" size={32} />
             Profit Analytics
@@ -65,6 +71,7 @@ function ProfitDetails() {
           </p>
         </div>
 
+        {/* total profit */}
         <div className="bg-emerald-500/10 border border-emerald-500/20 p-6 rounded-2xl shadow-xl shadow-emerald-500/5 min-w-60">
           <div className="flex items-center gap-3 mb-1">
             <div className="p-2 bg-emerald-500/20 rounded-lg">
@@ -83,6 +90,7 @@ function ProfitDetails() {
         </div>
       </div>
 
+      {/* details table */}
       <div className="max-w-5xl mx-auto bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -96,6 +104,7 @@ function ProfitDetails() {
             <tbody className="divide-y divide-slate-800">
               {profits.length > 0 ? (
                 profits.map((item, index) => (
+                  // Product Item
                   <tr
                     key={index}
                     className="hover:bg-slate-800/30 transition-all group"
@@ -110,11 +119,15 @@ function ProfitDetails() {
                         </span>
                       </div>
                     </td>
+
+                    {/* Units Sold */}
                     <td className="p-6 text-center">
                       <span className="inline-block bg-slate-800 text-slate-300 px-4 py-1 rounded-lg text-sm font-mono border border-slate-700 group-hover:border-slate-600 transition-colors">
                         {item.quantity_sold}
                       </span>
                     </td>
+
+                    {/* Net Profit */}
                     <td className="p-6 text-right">
                       <span className="text-lg font-black text-emerald-400 font-mono">
                         +$
@@ -126,6 +139,7 @@ function ProfitDetails() {
                   </tr>
                 ))
               ) : (
+                // no data error
                 <tr>
                   <td
                     colSpan={3}
@@ -137,15 +151,20 @@ function ProfitDetails() {
               )}
             </tbody>
 
+            {/* summary */}
             {profits.length > 0 && (
               <tfoot className="bg-slate-800/30 border-t border-slate-700">
                 <tr className="text-slate-300 font-bold">
                   <td className="p-6 text-[10px] uppercase tracking-widest text-slate-500">
                     Summary Statistics
                   </td>
+
+                  {/* total units */}
                   <td className="p-6 text-center font-mono text-indigo-400">
                     {totalUnits} Units
                   </td>
+
+                  {/* total profit */}
                   <td className="p-6 text-right text-xl font-black text-emerald-400">
                     $
                     {totalProfitSum.toLocaleString(undefined, {
@@ -159,6 +178,7 @@ function ProfitDetails() {
         </div>
       </div>
 
+      {/* other errors text */}
       {error && (
         <div className="max-w-5xl mx-auto mt-6 bg-rose-500/10 border border-rose-500/20 text-rose-400 p-4 rounded-xl flex items-center gap-3 animate-pulse">
           <p className="text-sm font-bold"> {error}</p>

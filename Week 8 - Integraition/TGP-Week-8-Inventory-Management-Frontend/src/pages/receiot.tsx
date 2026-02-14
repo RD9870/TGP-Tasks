@@ -17,48 +17,64 @@ interface ReceiptItem {
 }
 
 const ReceiptForm = () => {
+  // products to display all the store products
   const [products, setProducts] = useState<Product[]>([]);
+  // the items added to the recipt
   const [items, setItems] = useState<ReceiptItem[]>([
     { product_id: "", product_name: "", quantity: 1, price: 0 },
   ]);
+  // recipt details
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [cashierName, setCashierName] = useState<string>("...");
+  // loading indicator
   const [loading, setLoading] = useState(true);
 
+  // get data from the backend after the intial render
   useEffect(() => {
     const loadData = async () => {
       try {
+        // hide loading indicator
+        setLoading(true);
         const [userResponse, productsResponse] = await Promise.all([
           api.get("/user"),
           api.get("/products"),
         ]);
         setCashierName(userResponse.data.username);
-
+        // add the fetched data to the ui
         const prodData = productsResponse.data.data;
         setProducts(Array.isArray(prodData) ? prodData : []);
       } catch (error) {
+        console.log(error);
         setCashierName("Unknown User");
+        toast.error("Sorry, Something went wrong");
       } finally {
+        // hide loading indicator
         setLoading(false);
       }
     };
     loadData();
   }, []);
 
+  // logout method
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/login";
   };
 
+  //
   const handleInputChange = (
-    index: number,
-    field: keyof ReceiptItem,
-    value: any
+    index: number, // row number
+    field: keyof ReceiptItem, //specific column (Product Description, Qty)
+    value: any, //nuber of units or product id
   ) => {
+    // add all the current items to the newItems array
     const newItems = [...items];
+    // changint the Product Description column
     if (field === "product_id") {
+      // find the list item with the selected product id
       const selectedProduct = products.find((p) => p.id.toString() === value);
       if (selectedProduct) {
+        // update the item data
         newItems[index] = {
           ...newItems[index],
           product_id: value,
@@ -66,10 +82,12 @@ const ReceiptForm = () => {
           price: selectedProduct.price,
         };
       }
-    } else {
+    }
+    // updating somethin else iser the field key
+    else {
       newItems[index] = { ...newItems[index], [field]: value };
     }
-
+    // if the user is typing the qty in the last row auto add a new row
     if (index === items.length - 1 && value !== "" && value !== 0) {
       newItems.push({
         product_id: "",
@@ -78,41 +96,47 @@ const ReceiptForm = () => {
         price: 0,
       });
     }
+    // update the items list
     setItems(newItems);
   };
-
+  // calculate the total each time the list changes
   useEffect(() => {
     const total = items.reduce(
       (sum, item) => sum + item.quantity * item.price,
-      0
+      0,
     );
     setTotalPrice(total);
   }, [items]);
 
+  // save the recipt to the database
   const handleSave = async () => {
+    // remove any items with empty values
     const filteredItems = items
       .filter((item) => item.product_id !== "" && item.quantity > 0)
       .map((item) => ({
         product_id: parseInt(item.product_id),
         quantity: item.quantity,
       }));
-
+    // show error in case the list is empty or has no valid input
     if (filteredItems.length === 0)
       return toast.error("Please select at least one product");
-
+    // show loading indicator
     setLoading(true);
+    // add the recipt tot he backend
     try {
       await api.post("/receipts", { items: filteredItems });
       toast.success("Receipt saved successfully!");
       setItems([{ product_id: "", product_name: "", quantity: 1, price: 0 }]);
       setTotalPrice(0);
     } catch (error: any) {
+      console.log(error);
       toast.error(error.response?.data?.message || "Error saving receipt");
     } finally {
       setLoading(false);
     }
   };
 
+  // loading indicator
   return loading ? (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950">
       <div role="status">
@@ -135,9 +159,10 @@ const ReceiptForm = () => {
       </div>
     </div>
   ) : (
+    // ui
     <div className="min-h-screen bg-slate-950 py-10 px-4 flex justify-center text-slate-200 selection:bg-blue-500/30">
       <div className="w-full max-w-4xl bg-slate-900 shadow-2xl rounded-2xl p-8 md:p-12 border border-slate-800">
-        {/* Logout Button positioned at the top right */}
+        {/* Logout Button at top right */}
         <div className="flex justify-end mb-4">
           <button
             onClick={handleLogout}
@@ -166,10 +191,10 @@ const ReceiptForm = () => {
             </span>
           </div>
         </div>
-
         {/* Table Area */}
         <div className="mb-10 overflow-hidden rounded-xl border border-slate-800">
           <table className="w-full text-left border-collapse">
+            {/* header */}
             <thead>
               <tr className="bg-slate-800/80 text-slate-300 text-xs uppercase tracking-widest">
                 <th className="p-4 font-bold border-b border-slate-700">
@@ -186,12 +211,14 @@ const ReceiptForm = () => {
                 </th>
               </tr>
             </thead>
+            {/* body */}
             <tbody className="divide-y divide-slate-800">
               {items.map((item, index) => (
                 <tr
                   key={index}
                   className="group hover:bg-slate-800/30 transition-colors"
                 >
+                  {/* drop down for product selection */}
                   <td className="p-0">
                     <select
                       value={item.product_id}
@@ -215,21 +242,25 @@ const ReceiptForm = () => {
                       ))}
                     </select>
                   </td>
+                  {/* quantity counter */}
                   <td className="p-0 w-24">
                     <input
+                      // make it non negative numbers only
                       type="number"
+                      min="0"
                       value={item.quantity || ""}
                       onChange={(e) =>
                         handleInputChange(
                           index,
                           "quantity",
-                          parseInt(e.target.value) || 0
+                          parseInt(e.target.value) || 0,
                         )
                       }
                       className="w-full p-4 text-center bg-transparent outline-none focus:bg-slate-800/50 font-mono font-bold text-blue-400"
                       placeholder="0"
                     />
                   </td>
+                  {/* price */}
                   <td className="p-4 text-right font-mono text-slate-400">
                     {item.price.toLocaleString()}
                   </td>
@@ -241,8 +272,7 @@ const ReceiptForm = () => {
             </tbody>
           </table>
         </div>
-
-        {/* Summary Area */}
+        {/* total */}
         <div className="flex flex-col items-end mb-10 pt-6">
           <div className="bg-blue-500/5 px-6 py-4 rounded-2xl border border-blue-500/20 text-right min-w-240px">
             <span className="text-slate-500 font-bold text-[10px] uppercase tracking-[0.2em] block mb-1">
@@ -254,9 +284,9 @@ const ReceiptForm = () => {
             </span>
           </div>
         </div>
-
         {/* Actions */}
         <div className="flex flex-col sm:flex-row justify-end gap-4 border-t border-slate-800 pt-8">
+          {/* clear btn */}
           <button
             onClick={() =>
               setItems([
@@ -267,6 +297,7 @@ const ReceiptForm = () => {
           >
             Clear All
           </button>
+          {/* save btn */}
           <button
             onClick={handleSave}
             disabled={loading}
@@ -274,9 +305,11 @@ const ReceiptForm = () => {
               loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
+            {/* active btn */}
             {loading ? (
               "PROCESSING..."
             ) : (
+              // not activw btn
               <>
                 <span>CONFIRM & SAVE</span>
                 <svg

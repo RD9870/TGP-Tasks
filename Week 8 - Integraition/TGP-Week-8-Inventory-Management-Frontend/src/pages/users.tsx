@@ -21,6 +21,7 @@ interface User {
 }
 
 function UsersPage() {
+  // initialize use states
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,6 +30,7 @@ function UsersPage() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [userIdToDelete, setUserIdToDelete] = useState<number | null>(null);
 
+  // initiate user info form
   const [formData, setFormData] = useState<User>({
     username: "",
     type: "user",
@@ -36,6 +38,7 @@ function UsersPage() {
     salary: "",
   });
 
+  // get users list from backend
   const fetchUsers = async () => {
     try {
       setLoading(true);
@@ -48,10 +51,12 @@ function UsersPage() {
     }
   };
 
+  // get the data after initial render
   useEffect(() => {
     fetchUsers();
   }, []);
 
+  // open the add and edit user modal
   const openModal = (user: User | null = null) => {
     setCurrentUser(user);
     setShowPassword(false);
@@ -68,6 +73,7 @@ function UsersPage() {
     setIsModalOpen(true);
   };
 
+  // submit the form data
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const loadingToast = toast.loading("Saving...");
@@ -86,11 +92,13 @@ function UsersPage() {
     }
   };
 
+  // open the confirm deletion modal
   const confirmDelete = (id: number) => {
     setUserIdToDelete(id);
     setIsDeleteModalOpen(true);
   };
 
+  // delete user from backend
   const executeDelete = async () => {
     if (!userIdToDelete) return;
     const loadingToast = toast.loading("Deleting...");
@@ -109,6 +117,7 @@ function UsersPage() {
   return (
     <div className="min-h-screen bg-[#0f172a] p-4 md:p-8 font-sans text-slate-100">
       <div className="max-w-5xl mx-auto mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        {/* title and subtitle */}
         <div>
           <h1 className="text-3xl font-extrabold text-white">
             User Management
@@ -117,6 +126,7 @@ function UsersPage() {
             Control system access, roles, and payroll.
           </p>
         </div>
+        {/* add user btn */}
         <button
           onClick={() => openModal()}
           className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/20 active:scale-95 transition-all"
@@ -124,9 +134,10 @@ function UsersPage() {
           <Plus size={20} /> Add New User
         </button>
       </div>
-
+      {/* table */}
       <div className="max-w-5xl mx-auto bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
         <table className="w-full text-left">
+          {/* header */}
           <thead>
             <tr className="bg-slate-800/50 text-slate-400 text-xs uppercase tracking-widest">
               <th className="p-5">User</th>
@@ -136,6 +147,7 @@ function UsersPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-800">
+            {/* loading indicator */}
             {loading ? (
               <tr>
                 <td
@@ -146,11 +158,13 @@ function UsersPage() {
                 </td>
               </tr>
             ) : (
+              // table content
               users.map((user) => (
                 <tr
                   key={user.id}
                   className="hover:bg-slate-800/30 transition-all"
                 >
+                  {/* user name */}
                   <td className="p-5">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 text-indigo-400 flex items-center justify-center font-bold">
@@ -161,6 +175,7 @@ function UsersPage() {
                       </span>
                     </div>
                   </td>
+                  {/* user role */}
                   <td className="p-5">
                     <span
                       className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider border ${
@@ -174,17 +189,21 @@ function UsersPage() {
                       {user.type}
                     </span>
                   </td>
+                  {/* salery */}
                   <td className="p-5 text-right font-mono text-slate-300 font-medium">
                     ${Number(user.salary).toLocaleString()}
                   </td>
+                  {/* action btn */}
                   <td className="p-5">
                     <div className="flex justify-center gap-2">
+                      {/* edit btn */}
                       <button
                         onClick={() => openModal(user)}
                         className="p-2.5 text-slate-400 hover:text-white hover:bg-slate-700 rounded-xl transition-all"
                       >
                         <Pencil size={18} />
                       </button>
+                      {/* delete btn */}
                       <button
                         onClick={() => confirmDelete(user.id!)}
                         className="p-2.5 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-xl transition-all"
@@ -200,9 +219,11 @@ function UsersPage() {
         </table>
       </div>
 
+      {/* add/edit user modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex justify-center items-center p-4 z-50 animate-in fade-in duration-200">
           <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
+            {/* title and exit btn */}
             <div className="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
               <h2 className="text-xl font-bold flex items-center gap-3">
                 <UserIcon className="text-indigo-400" />{" "}
@@ -215,7 +236,9 @@ function UsersPage() {
                 <X size={24} />
               </button>
             </div>
+            {/* form */}
             <form onSubmit={handleSubmit} className="p-8 space-y-5">
+              {/* user name field */}
               <input
                 className="w-full bg-slate-800/50 border border-slate-700 text-white rounded-xl p-3 outline-none focus:ring-2 focus:ring-indigo-500/50"
                 value={formData.username}
@@ -225,6 +248,7 @@ function UsersPage() {
                 placeholder="Username"
                 required
               />
+              {/* user role drop down */}
               <div className="grid grid-cols-2 gap-4">
                 <select
                   className="w-full bg-slate-800/50 border border-slate-700 text-white rounded-xl p-3 outline-none"
@@ -237,8 +261,10 @@ function UsersPage() {
                   <option value="manager">Manager</option>
                   <option value="cashier">Cashier</option>
                 </select>
+                {/* user salary */}
                 <input
                   type="number"
+                  min="0"
                   className="w-full bg-slate-800/50 border border-slate-700 text-white rounded-xl p-3 outline-none"
                   value={formData.salary}
                   onChange={(e) =>
@@ -248,6 +274,7 @@ function UsersPage() {
                   required
                 />
               </div>
+              {/* password */}
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -259,6 +286,7 @@ function UsersPage() {
                   placeholder="Password"
                   required={!currentUser}
                 />
+                {/* hide/show password btn */}
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -267,6 +295,7 @@ function UsersPage() {
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
+              {/* save btn */}
               <button className="w-full bg-indigo-600 py-4 rounded-xl font-black text-sm tracking-widest hover:bg-indigo-500 shadow-lg shadow-indigo-600/20 transition-all">
                 SAVE USER
               </button>
@@ -275,8 +304,10 @@ function UsersPage() {
         </div>
       )}
 
+      {/* confirm deletion modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 bg-slate-950/90 backdrop-blur-sm flex justify-center items-center p-4 z-60 animate-in zoom-in duration-150">
+          {/* icon title and subtitle */}
           <div className="bg-slate-900 border border-slate-800 p-8 rounded-4xl max-w-sm w-full text-center shadow-2xl">
             <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-rose-500/20">
               <AlertTriangle size={32} />
@@ -285,13 +316,16 @@ function UsersPage() {
             <p className="text-slate-400 mb-8 text-sm leading-relaxed">
               This account will be permanently removed from the system.
             </p>
+            {/* action btns */}
             <div className="flex gap-3">
+              {/* cancel btn */}
               <button
                 onClick={() => setIsDeleteModalOpen(false)}
                 className="flex-1 bg-slate-800 text-slate-300 py-3 rounded-xl font-bold"
               >
                 Cancel
               </button>
+              {/* confirm and delete btn */}
               <button
                 onClick={executeDelete}
                 className="flex-1 bg-rose-600 text-white py-3 rounded-xl font-bold shadow-lg shadow-rose-600/20 transition-all active:scale-95"
