@@ -6,8 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 createRoot(document.getElementById("root")!).render(
+  // enable strick mode to catch potential errors
   <StrictMode>
+    {/* router prouser to allow user to browse the app */}
     <BrowserRouter>
+      {/* toaster sittings */}
       <Toaster
         position="top-center"
         containerStyle={{
@@ -22,6 +25,7 @@ createRoot(document.getElementById("root")!).render(
         }}
         reverseOrder={false}
       />
+      {/* the app caomponent */}
       <App />
     </BrowserRouter>
   </StrictMode>,

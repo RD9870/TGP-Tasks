@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import type { LoginResponse } from "../types";
+import type { LoginResponse } from "../types/types";
 import type { UserInfoResponse } from "../types/apiResponses";
 
 function Login() {
