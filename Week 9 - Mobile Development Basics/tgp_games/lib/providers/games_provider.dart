@@ -7,22 +7,27 @@ import 'package:tgp_games/models/single_game_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GamesProvider with ChangeNotifier {
+  // loading indicator variable
   bool busy = false;
+  // failed variable
+  bool failed = false;
 
+  // change the value of the loading indicator
   void setBusy(bool status) {
     busy = status;
     notifyListeners();
   }
 
-  bool failed = false;
-
+  // change the value of the failed variable
   void setFailed(bool status) {
     failed = status;
     notifyListeners();
   }
 
+  // list of games to display
   List<GameModel> games = [];
 
+  // get the games from the backend
   void getGames(String? platformQuery) async {
     setBusy(true);
     final response = await http.get(
@@ -30,7 +35,7 @@ class GamesProvider with ChangeNotifier {
         "$baseUrl/games${platformQuery != null ? "?platform=${platformQuery.toLowerCase()}" : ""}",
       ),
     );
-
+    // print some info in the debug mode
     if (kDebugMode) {
       print(
         "RESPONSE GET : $baseUrl/games${platformQuery != null ? "?platform=${platformQuery.toLowerCase()}" : ""}",
@@ -38,9 +43,11 @@ class GamesProvider with ChangeNotifier {
       print("RESPONSE STATUS CODE : ${response.statusCode}");
       print("RESPONSE BODY : ${response.body}");
     }
+    // backend response is ok
     if (response.statusCode == 200) {
       var decodedData = jsonDecode(response.body);
-      // TODO TASK 1 REFACTOR DONE
+      // todo TASK 1 REFACTOR DONE
+      // add the fetched data to the displayed list
       games = List<GameModel>.from(
         decodedData.map((game) {
           return GameModel.fromJson(game);
@@ -48,26 +55,33 @@ class GamesProvider with ChangeNotifier {
       );
       setFailed(false);
       setBusy(false);
-    } else {
+    }
+    // backend response is not ok
+    else {
+      // set the failed variable to true
       setFailed(true);
       setBusy(false);
     }
   }
 
+  // user selected one game to view it;s details
   SingleGameModel? currentGameModel;
-
+  // get the details of one game
   Future<void> getSingleGame(String gId) async {
+    // reset the variable
     currentGameModel = null;
     setBusy(true);
+    // get the details of the game from the backend
     final response = await http.get(Uri.parse("$baseUrl/game?id=$gId"));
-
+    // if in debug mode show some useful info
     if (kDebugMode) {
       print("RESPONSE GET for $gId : $baseUrl/game?id=$gId");
       print("RESPONSE STATUS CODE : ${response.statusCode}");
       print("RESPONSE BODY : ${response.body}");
     }
-
+    // backend response if ok
     if (response.statusCode == 200) {
+      // ubdate the current game variable
       currentGameModel = SingleGameModel.fromJson(jsonDecode(response.body));
       setBusy(false);
       setFailed(false);
@@ -77,7 +91,9 @@ class GamesProvider with ChangeNotifier {
     }
   }
 
+  // launch the freetogame_profile_url or game_url in the in app browser
   Future<void> launchInBrowserView(Uri url) async {
+    // show error if something goes wrong
     if (!await launchUrl(url, mode: LaunchMode.inAppBrowserView)) {
       throw Exception('Could not launch $url');
     }

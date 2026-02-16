@@ -7,6 +7,7 @@ class ShimmerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // place holder skeleton widget
     return ClipRRect(
       borderRadius: BorderRadiusGeometry.circular(12),
       child: SizedBox(

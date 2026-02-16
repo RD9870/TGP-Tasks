@@ -16,6 +16,7 @@ class SingleGameScreen extends StatefulWidget {
 class _SingleGameScreenState extends State<SingleGameScreen> {
   @override
   void initState() {
+    // get tyhe game details after the initial widget build
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<GamesProvider>(
         context,
@@ -25,6 +26,7 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
     super.initState();
   }
 
+  //expand the description section variable
   bool textExpanded = false;
 
   @override
@@ -35,22 +37,26 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
           body: SingleChildScrollView(
             child: Column(
               children: [
+                // show skeleton while data is being fetched
                 gamesConsumer.currentGameModel == null
                     ? SizedBox(
                         width: getSize(context).width,
                         height: getSize(context).height * 0.25,
-
                         child: ShimmerWidget(),
                       )
+                    // thumbnail image
                     : Image.network(
                         width: getSize(context).width,
                         height: getSize(context).height * 0.25,
                         fit: BoxFit.cover,
                         gamesConsumer.currentGameModel!.thumbnail,
                       ),
-
+                // title
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
                   child: Row(
                     children: [
                       Expanded(
@@ -64,6 +70,7 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
                     ],
                   ),
                 ),
+                // description
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -75,7 +82,7 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-
+                // expand description btn
                 IconButton(
                   onPressed: () {
                     setState(() {
@@ -88,7 +95,7 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
                         : CupertinoIcons.chevron_down,
                   ),
                 ),
-
+                // image galleary
                 SizedBox(
                   height: getSize(context).height * 0.2,
                   child: (gamesConsumer.currentGameModel != null)
@@ -116,16 +123,20 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
                             );
                           },
                         )
+                      // if game has no images show error
                       : (gamesConsumer.currentGameModel != null &&
                             gamesConsumer.currentGameModel!.screenshots.isEmpty)
                       ? Text("No Images Avaliable")
+                      // loading indicator
                       : Text("Images Loading"),
                 ),
+                // show minimal system requirements in pc games
                 (gamesConsumer.currentGameModel != null &&
                         gamesConsumer
                                 .currentGameModel!
                                 .minimumSystemRequirements !=
                             null)
+                    // each requirement has a set name (os, graphics, memeory ect)
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -147,19 +158,19 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
                         ],
                       )
                     : SizedBox(),
+                // row of btns to see more info about game
                 (gamesConsumer.currentGameModel != null)
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          // TODO TASK 2 GAME URL BUTTON HERE & OPEN LINK DONE
-                          // (gamesConsumer.currentGameModel!.gameUrl != null)
-                          //     ?
+                          // todo TASK 2 GAME URL BUTTON HERE & OPEN LINK DONE
                           TextButton(
                             style: ButtonStyle(
                               backgroundColor: WidgetStateProperty.all(
                                 primaryColor,
                               ),
                             ),
+                            // launch the game url in he phone browser
                             onPressed: () {
                               gamesConsumer.launchInBrowserView(
                                 Uri.parse(
@@ -175,11 +186,8 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
                               "Game URL",
                             ),
                           ),
-                          // : SizedBox(),
-
-                          // TODO TASK 3 FREE TO PROFILE GAME URL BUTTON HERE & OPEN LINK DONE
-                          // (gamesConsumer.currentGameModel!.freetogameProfileUrl != null)
-                          //     ?
+                          // todo TASK 3 FREE TO PROFILE GAME URL BUTTON HERE & OPEN LINK DONE
+                          // open the Free to Game Profile in the browser
                           TextButton(
                             style: ButtonStyle(
                               backgroundColor: WidgetStateProperty.all(
@@ -200,7 +208,6 @@ class _SingleGameScreenState extends State<SingleGameScreen> {
                               "Free to Game Profile",
                             ),
                           ),
-                          // : SizedBox(),
                         ],
                       )
                     : SizedBox(),

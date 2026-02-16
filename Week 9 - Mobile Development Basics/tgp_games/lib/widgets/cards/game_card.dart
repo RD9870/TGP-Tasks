@@ -10,7 +10,9 @@ class GameCard extends StatelessWidget {
   final GameModel gameModel;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return
+    // got to the songle game page to show game details
+    GestureDetector(
       onTap: () {
         Navigator.push(
           context,
@@ -20,72 +22,75 @@ class GameCard extends StatelessWidget {
           ),
         );
       },
-      child: ClipRRect(
-        borderRadius: BorderRadiusGeometry.circular(12),
-        child: GridTile(
-          header: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-
-                colors: [Colors.transparent, Colors.black87],
-              ),
-            ),
-
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Icon(
-                    gameModel.platform.toLowerCase().contains(
-                          "web".toLowerCase(),
-                        )
-                        ? Icons.web
-                        : Icons.tv,
-                    color: Colors.white,
+      child:
+          // game image
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(12),
+            // use GridTile to create a shadow effect on the thumbnail image
+            child: GridTile(
+              // top shadowy edges effect
+              header: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Colors.transparent, Colors.black87],
                   ),
-                ],
-              ),
-            ),
-          ),
-
-          footer: Container(
-            height: getSize(context).height * 0.2,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-
-                colors: [Colors.black87, Colors.transparent],
-              ),
-            ),
-
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
                     children: [
-                      Expanded(
-                        child: Text(
-                          gameModel.title,
-                          style: TextStyle(
-                            color: whiteColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                      // icon to show if it's a pc or browser game
+                      Icon(
+                        gameModel.platform.toLowerCase().contains(
+                              "web".toLowerCase(),
+                            )
+                            ? Icons.web
+                            : Icons.tv,
+                        color: Colors.white,
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
+              // bottom shadowy edges effect
+              footer: Container(
+                height: getSize(context).height * 0.2,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Colors.black87, Colors.transparent],
+                  ),
+                ),
+                // game title
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              gameModel.title,
+                              style: TextStyle(
+                                color: whiteColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // game thumbnail image
+              child: Image.network(gameModel.thumbnail, fit: BoxFit.cover),
             ),
           ),
-          child: Image.network(gameModel.thumbnail, fit: BoxFit.cover),
-        ),
-      ),
     );
   }
 }

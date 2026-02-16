@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-// TODO TASK 0 ( GOLDEN TASK ) WEB REFACTOR Done?
-
+// todo TASK 0 ( GOLDEN TASK ) WEB REFACTOR Done?
+// from https://quicktype.io/
+// define the object expected from the backend
 class SingleGameModel {
   int id;
   String title;

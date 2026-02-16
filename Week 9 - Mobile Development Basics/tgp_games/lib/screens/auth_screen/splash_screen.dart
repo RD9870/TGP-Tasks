@@ -19,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        // container fills the screen
         width: getSize(context).width,
         height: getSize(context).height,
         decoration: BoxDecoration(
@@ -28,10 +29,11 @@ class _SplashScreenState extends State<SplashScreen> {
           child:
               Image.asset(
                     "assets/stupidLogo.png",
-
                     width: getSize(context).width * 0.75,
                   )
+                  // animate the assets into the screen
                   .animate(
+                    // navigate to the home screen after animation is complete
                     onComplete: (controller) {
                       Timer(Duration(seconds: 1), () {
                         Navigator.pushReplacement(
@@ -43,13 +45,14 @@ class _SplashScreenState extends State<SplashScreen> {
                       });
                     },
                   )
+                  // asset image fades slowly into the screen
                   .fadeIn(
                     delay: animationDuration * 3,
                     duration: animationDuration * 2,
                   )
+                  // scale the image horizantally
                   .scaleX(
                     delay: animationDuration * 3,
-
                     duration: animationDuration,
                     begin: 0.9,
                     end: 1,

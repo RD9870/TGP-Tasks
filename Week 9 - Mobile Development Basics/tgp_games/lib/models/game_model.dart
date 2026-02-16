@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+// from https://quicktype.io/
+// define the object expected from the backend
 class GameModel {
   int id;
   String title;
