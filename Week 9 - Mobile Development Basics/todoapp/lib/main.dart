@@ -14,19 +14,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return
+    // allows the injection of multiple state providers (data models, services) into the Flutter widget tree at once, making them available to the entire application
+    MultiProvider(
       providers: [
         ChangeNotifierProvider<TasksProvider>(create: (_) => TasksProvider()),
         ChangeNotifierProvider<DarkModeProvider>(
           create: (_) => DarkModeProvider()..getFromlocalStorage(),
         ),
       ],
+      //
       child: Consumer<DarkModeProvider>(
         builder: (context, darkModeConsumer, _) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-
             title: 'TODO',
+            // theme sittings
             theme: ThemeData(
               textTheme: GoogleFonts.cairoTextTheme(),
               scaffoldBackgroundColor: darkModeConsumer.isDark
@@ -37,26 +40,28 @@ class MyApp extends StatelessWidget {
                 labelStyle: GoogleFonts.cairo(
                   color: darkModeConsumer.isDark ? Colors.white : Colors.blue,
                 ),
-
+                // color of the bar ujnder the selected tab in a tabbar
                 indicatorColor: darkModeConsumer.isDark
                     ? Colors.white
                     : Colors.blue,
               ),
-
+              // dialog theme
               dialogTheme: DialogThemeData(
                 backgroundColor: darkModeConsumer.isDark
                     ? Colors.white60
                     : Colors.white,
-
+                // title theme
                 titleTextStyle: TextStyle(
                   color: darkModeConsumer.isDark ? Colors.white : Colors.black,
                 ),
               ),
+              // appbar
               appBarTheme: AppBarThemeData(
                 backgroundColor: darkModeConsumer.isDark
                     ? Colors.black
                     : Colors.blue,
               ),
+              // text fields theme
               inputDecorationTheme: InputDecorationThemeData(
                 fillColor: darkModeConsumer.isDark
                     ? Colors.white54
@@ -74,6 +79,7 @@ class MyApp extends StatelessWidget {
                   borderSide: BorderSide(color: Colors.red),
                 ),
               ),
+              // theme for eleveated btns
               elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.blue),

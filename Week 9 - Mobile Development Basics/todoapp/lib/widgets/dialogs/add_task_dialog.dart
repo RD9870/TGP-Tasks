@@ -32,6 +32,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                 children: [
                   Row(
                     children: [
+                      // pop up title
                       Text(
                         "Add New Task",
                         style: TextStyle(
@@ -45,11 +46,12 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                     ],
                   ),
                   SizedBox(height: 20),
-
+                  // title text field
                   TextFormField(
                     decoration: InputDecoration(hint: Text("Title")),
                     controller: titleController,
                     autofocus: true,
+                    // validation
                     validator: (value) {
                       if (value == null) {
                         return "Title is Required!";
@@ -65,6 +67,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                     },
                   ),
                   SizedBox(height: 20),
+                  // subtitle text field
                   TextFormField(
                     controller: subtitleController,
                     decoration: InputDecoration(hint: Text("Subtitle")),
@@ -79,10 +82,11 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                     },
                   ),
                   SizedBox(height: 24),
-
+                  // action btns
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      // cancel btn
                       Expanded(
                         child: TextButton(
                           onPressed: () {
@@ -95,6 +99,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                         ),
                       ),
                       SizedBox(width: 24),
+                      // add btn
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {

@@ -15,20 +15,23 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    // Provider.of<DarkModeProvider>(context, listen: false).getFromlocalStorage();
+    // get data from the local storage
     Provider.of<TasksProvider>(context, listen: false).fetchFromLocalStorage();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    // this allows the widget to accsess all the methods in the listed providers using the selected variable names
     return Consumer2<TasksProvider, DarkModeProvider>(
       builder: (context, tasksConsumer, darkModeConsumer, _) {
         return Scaffold(
+          // drawer
           drawer: Drawer(
             child: Column(
               children: [
-                // TODO TASK 5 DarkMode Button + Clear SharedPrefrences Data DONE
+                // header
+                // todo TASK 5 DarkMode Button + Clear SharedPrefrences Data DONE
                 const DrawerHeader(
                   child: Text(
                     'Drawer Header',
@@ -39,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+                // drawer tile 1
                 ListTile(
                   leading: Icon(
                     darkModeConsumer.isDark
@@ -53,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.pop(context);
                   },
                 ),
-
+                // drawer tile 2
                 ListTile(
                   title: const Text('Clear Shared Prefrences'),
                   leading: Icon(Icons.delete),
@@ -66,16 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           appBar: AppBar(
-            actions: [
-              // IconButton(
-              //   onPressed: () {
-              //     darkModeConsumer.switchMode();
-              //   },
-              //   icon: Icon(
-              //     darkModeConsumer.isDark ? Icons.light_mode : Icons.dark_mode,
-              //   ),
-              // ),
-            ],
             centerTitle: true,
             title: Text(
               "TODO APP",
@@ -86,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-
+          // tabs
           body: DefaultTabController(
             length: 3,
             child: Column(
@@ -98,9 +92,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Tab(text: "Completed"),
                   ],
                 ),
+                // tasks list tiles
                 Expanded(
                   child: TabBarView(
                     children: [
+                      // all list view
                       ListView.builder(
                         itemCount: tasksConsumer.tasks.length,
                         padding: EdgeInsets.symmetric(vertical: 8),
@@ -110,6 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                       ),
+                      // in progress list view
                       ListView.builder(
                         itemCount: tasksConsumer.tasks.length,
                         padding: EdgeInsets.symmetric(vertical: 8),
@@ -119,6 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               : TaskCard(taskModel: tasksConsumer.tasks[index]);
                         },
                       ),
+                      // completed lis view
                       ListView.builder(
                         itemCount: tasksConsumer.tasks.length,
                         padding: EdgeInsets.symmetric(vertical: 8),
@@ -134,6 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          // add task btn
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton: FloatingActionButton(

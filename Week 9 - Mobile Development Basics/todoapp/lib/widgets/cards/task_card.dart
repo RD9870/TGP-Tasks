@@ -11,7 +11,10 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return
+    // gesture detection
+    GestureDetector(
+      // go to the task's details page when tapped
       onTap: () {
         Navigator.push(
           context,
@@ -20,41 +23,84 @@ class TaskCard extends StatelessWidget {
           ),
         );
       },
-
+      // show the deletion confimation pop up on long press
       onLongPress: () {
         showDialog(
           context: context,
           builder: (context) => DeleteTaskDialog(taskModel: taskModel),
         );
       },
-
+      // the card
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
-          decoration: BoxDecoration(
-            color: taskModel.isCompleted
-                ? Colors.blue.withValues(alpha: 0.5)
-                : Colors.blue,
-
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child:
+            // animate the color shift when task is checked or unchecked
+            AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              decoration: BoxDecoration(
+                color: taskModel.isCompleted
+                    ? Colors.blue.withValues(alpha: 0.5)
+                    : Colors.blue,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              // card conttents
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(Icons.task, color: Colors.white),
-                        SizedBox(width: 4),
+                        Row(
+                          children: [
+                            // task icon
+                            Icon(Icons.task, color: Colors.white),
+                            SizedBox(width: 4),
+                            // task title
+                            Text(
+                              taskModel.title,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                decoration: taskModel.isCompleted
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none,
+                              ),
+                            ),
+                          ],
+                        ),
+                        // task check box
+                        Checkbox(
+                          value: taskModel.isCompleted,
+                          onChanged: (v) {
+                            Provider.of<TasksProvider>(
+                              context,
+                              listen: false,
+                            ).switchTask(taskModel.id);
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // task subtitle
                         Text(
-                          taskModel.title,
+                          taskModel.subTitle.toString(),
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            decoration: taskModel.isCompleted
+                                ? TextDecoration.lineThrough
+                                : TextDecoration.none,
+                          ),
+                        ),
+                        // task creation date
+                        Text(
+                          taskModel.createdAt
+                              .substring(0, 10)
+                              .replaceAll("-", "/"),
+                          style: TextStyle(
                             color: Colors.white,
                             decoration: taskModel.isCompleted
                                 ? TextDecoration.lineThrough
@@ -63,47 +109,10 @@ class TaskCard extends StatelessWidget {
                         ),
                       ],
                     ),
-
-                    Checkbox(
-                      value: taskModel.isCompleted,
-                      onChanged: (v) {
-                        Provider.of<TasksProvider>(
-                          context,
-                          listen: false,
-                        ).switchTask(taskModel.id);
-                      },
-                    ),
                   ],
                 ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      taskModel.subTitle.toString(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        decoration: taskModel.isCompleted
-                            ? TextDecoration.lineThrough
-                            : TextDecoration.none,
-                      ),
-                    ),
-
-                    Text(
-                      taskModel.createdAt.substring(0, 10).replaceAll("-", "/"),
-                      style: TextStyle(
-                        color: Colors.white,
-                        decoration: taskModel.isCompleted
-                            ? TextDecoration.lineThrough
-                            : TextDecoration.none,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
       ),
     );
   }

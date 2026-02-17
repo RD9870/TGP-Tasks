@@ -9,16 +9,19 @@ class DeleteTaskDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      // title
       title: Text("Delete Task"),
-      actions: [],
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // subtitle
           Text("Are you sure yo want to delete ${taskModel.title} ?"),
           SizedBox(height: 24),
+          // action btns
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              // cancel btn
               Expanded(
                 child: TextButton(
                   onPressed: () {
@@ -28,6 +31,7 @@ class DeleteTaskDialog extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 24),
+              // delete btn
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
