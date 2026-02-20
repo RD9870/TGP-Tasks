@@ -1,3 +1,6 @@
+// from https://quicktype.io/
+// define the object expected from the backend
+
 class Taskmodel {
   String title;
   String? subtitle;

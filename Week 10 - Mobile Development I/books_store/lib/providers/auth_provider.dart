@@ -11,10 +11,14 @@ enum AuthStatus {
 }
 
 class AuthProvider extends BaseProvider {
+  // user authorization status
   AuthStatus status = AuthStatus.uninitialized;
+  // acess token
   String? token;
 
+  // initiate the authantication
   Future<void> initAuthProvider() async {
+    // SharedPreferences instance to store and retrive data from local storgae
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     String? tempToken = prefs.getString("token");
