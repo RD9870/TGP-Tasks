@@ -1,5 +1,5 @@
 
-<img width="346" height="182" alt="TGP_TASKS" src="https://github.com/user-attachments/assets/8168dc4f-c9f6-429b-8217-721d55c9777b" />
+<p align="center"> <img width="346" height="182" alt="TGP_TASKS" src="https://github.com/user-attachments/assets/8168dc4f-c9f6-429b-8217-721d55c9777b"> </p>
 
 ## 📝 Overview
 This repository containes all the projects that I created during the tatweer graduate program from October 2025 to January 2026.
