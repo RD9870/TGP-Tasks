@@ -6,9 +6,13 @@ This repository containes all the projects that I created during the tatweer gra
 
 ![Static Badge](https://img.shields.io/badge/-PHP-777BB4?style=plastic&logo=php&labelColor=5b5b5b)
 ![Static Badge](https://img.shields.io/badge/-HTML-E34F26?style=plastic&logo=html5&labelColor=5b5b5b)
+![Static Badge](https://img.shields.io/badge/-tailwindcss-06B6D4?style=plastic&logo=tailwindcss&labelColor=5b5b5b)
 ![Static Badge](https://img.shields.io/badge/-laravel-FF2D20?style=plastic&logo=laravel&labelColor=5b5b5b)
 ![Static Badge](https://img.shields.io/badge/-typescript-3178C6?style=plastic&logo=typescript&labelColor=5b5b5b)
+![Static Badge](https://img.shields.io/badge/-vite-9135FF?style=plastic&logo=vite&labelColor=5b5b5b)
+![Static Badge](https://img.shields.io/badge/-react-61DAFB?style=plastic&logo=react&labelColor=5b5b5b)
 ![Static Badge](https://img.shields.io/badge/-dart-0175C2?style=plastic&logo=dart&labelColor=5b5b5b)
+
 
 ## 📁 Folders Breakdown
 
